@@ -25,7 +25,7 @@ class Signup extends React.Component {
   /** Initialize state fields. */
   constructor(props) {
     super(props);
-    this.state = { email: '', password: '', error: '', redirectToReferer: false };
+    this.state = { email: '', password: '',firstName:'',lastName:'',studentID:'',campus:'', error: '', redirectToReferer: false };
   }
 
   /** Update the form controls each time the user interacts with them. */
@@ -35,7 +35,7 @@ class Signup extends React.Component {
 
   /** Handle Signup submission. Create user account and a profile entry, then redirect to the home page. */
   submit = () => {
-    const { email, password,firstName, LastName, studentId, campus } = this.state;
+    const { email, password, firstName, LastName, studentId, campus } = this.state;
     Accounts.createUser({ email, username: email, password, firstName, LastName, studentId, campus }, (err) => {
       if (err) {
         this.setState({ error: err.reason });
@@ -59,8 +59,8 @@ class Signup extends React.Component {
             <Header as="h2" textAlign="center">
               Register your account
             </Header>
-            <Form onSubmit={this.submit}>
-              <Segment stacked>
+            <Form onSubmit={this.submit} inverted>
+              <Segment stacked inverted>
                 <Header as="h5" textAlign="center">
                   Account Information
                 </Header>
@@ -99,7 +99,7 @@ class Signup extends React.Component {
                   <Form.Input fluid label='Last name' placeholder='Last name' name="lastName" type="lastName" onChange={this.handleChange}/>
                 </Form.Group>
                 <Form.Group widths={'equal'}>
-                  <Form.Input fluid label='Student ID Number' placeholder='00000000' name="studentId" type="studentId" onChange={this.handleChange}/>
+                  <Form.Input fluid label='Student ID Number' placeholder='XXXXXXXX' name="studentId" type="studentId" onChange={this.handleChange}/>
                   <Form.Select
                       fluid
                       label='Campus'
@@ -113,7 +113,7 @@ class Signup extends React.Component {
                 <Form.Button content="Submit"/>
               </Segment>
             </Form>
-            <Message>
+            <Message color='black'>
               Have an account with us? <Link to="/signin">Sign in</Link>
             </Message>
             {this.state.error === '' ? (
