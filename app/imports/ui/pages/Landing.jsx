@@ -4,6 +4,7 @@ import { Grid, Image, Icon, Header, Segment } from 'semantic-ui-react';
 /** A simple static component to render some text for the landing page. */
 class Landing extends React.Component {
   render() {
+    const txGreen = { background: '#16c381' };
     return (
         <div>
           <div className='books-background'>
@@ -17,7 +18,7 @@ class Landing extends React.Component {
           <br/><br/><br/>
           <Grid container centered stackable columns={3}>
             <Grid.Column textAlign='center'>
-              <Segment inverted color='green'>
+              <Segment inverted style={txGreen}>
                 <Header inverted as='h1'>Buy Textbooks</Header>
                 <Icon size='huge' name='shop'/>
                 <Header inverted as='h3'>Purchase used text books for the classes you need from other students,
@@ -25,7 +26,7 @@ class Landing extends React.Component {
               </Segment>
             </Grid.Column>
             <Grid.Column textAlign='center'>
-              <Segment inverted color='green'>
+              <Segment inverted style={txGreen}>
                 <Header inverted as='h1'>Welcome!</Header>
                 <Icon size='huge' name='user circle outline'/>
                 <Header inverted as='h3'>University of Hawaii text book market exchange providing
@@ -33,7 +34,7 @@ class Landing extends React.Component {
               </Segment>
             </Grid.Column>
             <Grid.Column textAlign='center'>
-              <Segment inverted color='green'>
+              <Segment inverted style={txGreen}>
                 <Header inverted as='h1'>Exchange Textbooks</Header>
                 <Icon size='huge' name='dollar sign'/>
                 <Header inverted as='h3'>Sell your own text books to other college students or
