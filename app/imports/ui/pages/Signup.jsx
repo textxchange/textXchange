@@ -140,8 +140,8 @@ class Signup extends React.Component {
                   Student Information
                 </Header>
                 <Form.Group widths={'equal'}>
-                  <Form.Input fluid label='First name' placeholder='First name' name="firstName" type="firstName" onChange={this.handleChange} />
-                  <Form.Input fluid label='Last name' placeholder='Last name' name="lastName" type="lastName" onChange={this.handleChange}/>
+                  <Form.Input required fluid label='First name' placeholder='First name' name="firstName" type="firstName" onChange={this.handleChange} />
+                  <Form.Input required fluid label='Last name' placeholder='Last name' name="lastName" type="lastName" onChange={this.handleChange}/>
                 </Form.Group>
                 <Form.Group widths={'equal'}>
                   <Form.Input fluid label='Student ID Number' placeholder='XXXXXXXX' name="studentId" type="studentId" onChange={this.handleChange}/>
