@@ -27,7 +27,7 @@ class Signup extends React.Component {
   /** Initialize state fields. */
   constructor(props) {
     super(props);
-    this.state = { email: '', password: '',firstName:'',lastName:'',studentID:'',campus:'', error: '', redirectToReferer: false };
+    this.state = { email: '', password: '',repassword:'', firstName:'',lastName:'',studentID:'',campus:'', error: '', redirectToReferer: false };
   }
 
   /** Update the form controls each time the user interacts with them. */
@@ -36,9 +36,44 @@ class Signup extends React.Component {
   }
 
   /** Handle Signup submission. Create user account and a profile entry, then redirect to the home page. */
-  submit = () => {
-    const { email, password, firstName, lastName, studentId, campus } = this.state;
+  handleSubmit = () => {
+    const { password, repassword } = this.state;
+    // perform all neccassary validations
+    if (password !== repassword) {
+      alert("Passwords don't match");
+    } else {
+      const { email, password, repassword, firstName, lastName, studentId, campus } = this.state;
+      Accounts.createUser({ email, username: email, password, firstName, lastName, studentId, campus }, (err) => {
+        if (password !== repassword) {
+          swal('Error', error.message, 'error');
+        } else {
+          // make API call
+        }
+        if (err) {
+          this.setState({ error: err.reason });
+        } else {
+          Profiles.insert({ firstName, lastName, studentId, campus, owner: email },
+              (error) => {
+                if (error) {
+                  swal('Error', error.message, 'error');
+                } else {
+                  swal('Success', 'Profile created successfully', 'success');
+                }
+              });
+          this.setState({ error: '', redirectToReferer: true });
+        }
+      });
+    }
+  }
+
+  /* = () => {
+    const { email, password, repassword, firstName, lastName, studentId, campus } = this.state;
     Accounts.createUser({ email, username: email, password, firstName, lastName, studentId, campus }, (err) => {
+      if (password !== repassword) {
+        swal('Error', error.message, 'error');
+      } else {
+        // make API call
+      }
       if (err) {
         this.setState({ error: err.reason });
       } else {
@@ -53,7 +88,7 @@ class Signup extends React.Component {
         this.setState({ error: '', redirectToReferer: true });
       }
     });
-  }
+  }*/
 
   /** Display the signup form. Redirect to add page after successful registration and login. */
   render() {
@@ -69,8 +104,8 @@ class Signup extends React.Component {
             <Header as="h2" textAlign="center">
               Register your account
             </Header>
-            <Form onSubmit={this.submit} inverted>
-              <Segment stacked inverted>
+            <Form onSubmit={this.handleSubmit} inverted>
+                <Segment stacked inverted>
                 <Header as="h5" textAlign="center">
                   Account Information
                 </Header>
@@ -93,11 +128,11 @@ class Signup extends React.Component {
                   onChange={this.handleChange}
                 />
                 <Form.Input
-                    label="Re-enter Password"
+                    label="repassword"
                     icon="lock"
                     iconPosition="left"
-                    name="re-enter password"
-                    placeholder="re-enter password"
+                    name="repassword"
+                    placeholder="repassword"
                     type="password"
                     onChange={this.handleChange}
                 />
