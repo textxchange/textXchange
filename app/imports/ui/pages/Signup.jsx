@@ -27,7 +27,16 @@ class Signup extends React.Component {
   /** Initialize state fields. */
   constructor(props) {
     super(props);
-    this.state = { email: '', password: '',firstName:'',lastName:'',studentID:'',campus:'', error: '', redirectToReferer: false };
+    this.state = {
+      email: '',
+      password: '',
+      firstName: '',
+      lastName: '',
+      studentID: '',
+      campus: '',
+      error: '',
+      redirectToReferer: false
+    };
   }
 
   /** Update the form controls each time the user interacts with them. */
@@ -63,81 +72,85 @@ class Signup extends React.Component {
       return <Redirect to={from}/>;
     }
     return (
-      <Container>
-        <Grid textAlign="center" verticalAlign="middle" centered columns={2}>
-          <Grid.Column>
-            <Header as="h2" textAlign="center">
-              Register your account
-            </Header>
-            <Form onSubmit={this.submit} inverted>
-              <Segment stacked inverted>
-                <Header as="h5" textAlign="center">
-                  Account Information
-                </Header>
-                <Form.Input
-                  label="Email"
-                  icon="user"
-                  iconPosition="left"
-                  name="email"
-                  type="email"
-                  placeholder="E-mail address"
-                  onChange={this.handleChange}
-                />
-                <Form.Input
-                  label="Password"
-                  icon="lock"
-                  iconPosition="left"
-                  name="password"
-                  placeholder="Password"
-                  type="password"
-                  onChange={this.handleChange}
-                />
-                <Form.Input
-                    label="Re-enter Password"
-                    icon="lock"
-                    iconPosition="left"
-                    name="re-enter password"
-                    placeholder="re-enter password"
-                    type="password"
-                    onChange={this.handleChange}
-                />
-                <Header as="h5" textAlign="center">
-                  Student Information
-                </Header>
-                <Form.Group widths={'equal'}>
-                  <Form.Input fluid label='First name' placeholder='First name' name="firstName" type="firstName" onChange={this.handleChange} />
-                  <Form.Input fluid label='Last name' placeholder='Last name' name="lastName" type="lastName" onChange={this.handleChange}/>
-                </Form.Group>
-                <Form.Group widths={'equal'}>
-                  <Form.Input fluid label='Student ID Number' placeholder='XXXXXXXX' name="studentId" type="studentId" onChange={this.handleChange}/>
-                  <Form.Select
-                      fluid
-                      label='Campus'
-                      options={options}
-                      placeholder='Campus'
-                      name="campus"
-                      type="campus"
+        <Container>
+          <Grid textAlign="center" verticalAlign="middle" centered columns={2}>
+            <Grid.Column>
+              <Header as="h2" textAlign="center" inverted>
+                Register your account
+              </Header>
+              <Form onSubmit={this.submit} inverted>
+                <Segment stacked inverted>
+                  <Header as="h5" textAlign="center">
+                    Account Information
+                  </Header>
+                  <Form.Input
+                      label="Email"
+                      icon="user"
+                      iconPosition="left"
+                      name="email"
+                      type="email"
+                      placeholder="E-mail address"
                       onChange={this.handleChange}
                   />
-                </Form.Group>
-                <Form.Button content="Submit"/>
-              </Segment>
-            </Form>
-            <Message color='black'>
-              Have an account with us? <Link to="/signin">Sign in</Link>
-            </Message>
-            {this.state.error === '' ? (
-              ''
-            ) : (
-              <Message
-                error
-                header="Registration was not successful"
-                content={this.state.error}
-              />
-            )}
-          </Grid.Column>
-        </Grid>
-      </Container>
+                  <Form.Input
+                      label="Password"
+                      icon="lock"
+                      iconPosition="left"
+                      name="password"
+                      placeholder="Password"
+                      type="password"
+                      onChange={this.handleChange}
+                  />
+                  <Form.Input
+                      label="Re-enter Password"
+                      icon="lock"
+                      iconPosition="left"
+                      name="re-enter password"
+                      placeholder="re-enter password"
+                      type="re-enter password"
+                      onChange={this.handleChange}
+                  />
+                  <Header as="h5" textAlign="center">
+                    Student Information
+                  </Header>
+                  <Form.Group widths={'equal'}>
+                    <Form.Input fluid label='First name' placeholder='First name' name="firstName" type="firstName"
+                                onChange={this.handleChange}/>
+                    <Form.Input fluid label='Last name' placeholder='Last name' name="lastName" type="lastName"
+                                onChange={this.handleChange}/>
+                  </Form.Group>
+                  <Form.Group widths={'equal'}>
+                    <Form.Input fluid label='Student ID Number' placeholder='XXXXXXXX' name="studentId" type="studentId"
+                                onChange={this.handleChange}/>
+                    <Form.Select
+                        fluid
+                        label='Campus'
+                        options={options}
+                        placeholder='Campus'
+                        name="campus"
+                        type="campus"
+                        onChange={this.handleChange}
+                    />
+                  </Form.Group>
+                  <Form.Button content="Submit"/>
+                </Segment>
+              </Form>
+              <Message color='black'>
+                Have an account with us? <Link to="/signin">Sign in</Link>
+              </Message>
+
+              {this.state.error === '' ? (
+                  ''
+              ) : (
+                  <Message
+                      error
+                      header="Registration was not successful"
+                      content={this.state.error}
+                  />
+              )}
+            </Grid.Column>
+          </Grid>
+        </Container>
     );
   }
 }
