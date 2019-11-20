@@ -12,7 +12,7 @@ class Book extends React.Component {
     return (
         <Card>
           {/* eslint-disable-next-line max-len */}
-          <Image src='https://lonelyplanet-weblinc.netdna-ssl.com/product_images/lonely_planet_us/the-place-to-be-1/pdp/5a2c7946f92ea161d578fc2d/pdp_main.jpg?c=1512864070' />
+          <Image className='book-image' src={this.props.book.image} />
           <Card.Content>
             <Card.Header>{this.props.book.title}</Card.Header>
             <Card.Meta>{this.props.book.author}</Card.Meta>
