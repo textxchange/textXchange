@@ -1,4 +1,17 @@
 .books-background {
-  background: url("images/books-background.png") no-repeat center center fixed;
+  background: url("/images/books-background.png") no-repeat center center fixed;
   background-size: cover;
+}
+
+.profile-pic {
+  height: 20px;
+  margin: 0 0 0 0 !important;
+}
+
+.book-image {
+  height: 300px;
+}
+
+.less-margin {
+  margin-top: -0.6em !important;
 }

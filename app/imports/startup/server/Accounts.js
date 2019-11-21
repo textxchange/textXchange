@@ -2,7 +2,6 @@ import { Meteor } from 'meteor/meteor';
 import { Accounts } from 'meteor/accounts-base';
 import { Roles } from 'meteor/alanning:roles';
 import { Profiles } from '../../api/profile/Profile';
-import swal from 'sweetalert';
 
 /* eslint-disable no-console */
 
@@ -13,10 +12,10 @@ function createUser(email, password, firstName, lastName, studentId, campus, rol
     email: email,
     password: password,
     profile: {
-       firstName: firstName,
-        lastName: lastName,
-        studentId: studentId,
-        campus: campus,
+      firstName: firstName,
+      lastName: lastName,
+      studentId: studentId,
+      campus: campus,
     },
 
   });
@@ -34,8 +33,12 @@ function createProfile(firstName, lastName, studentId, campus, email) {
 if (Meteor.users.find().count() === 0) {
   if (Meteor.settings.defaultAccounts) {
     console.log('Creating the default user(s)');
-    Meteor.settings.defaultAccounts.map(({ email, password, firstName, lastName, studentId, campus,role }) => createUser(email, password, firstName, lastName, studentId, campus, role));
-    Meteor.settings.defaultProfiles.map(({firstName, lastName, studentId, campus, owner }) => createProfile(firstName, lastName, studentId, campus, owner));
+    Meteor.settings.defaultAccounts.map((
+        { email, password, firstName, lastName, studentId, campus, role }
+    ) => createUser(email, password, firstName, lastName, studentId, campus, role));
+    Meteor.settings.defaultProfiles.map((
+        { firstName, lastName, studentId, campus, owner }
+    ) => createProfile(firstName, lastName, studentId, campus, owner));
   } else {
     console.log('Cannot initialize the database!  Please invoke meteor with a settings file.');
   }
