@@ -3,25 +3,12 @@ import PropTypes from 'prop-types';
 import { Link, Redirect } from 'react-router-dom';
 import { Container, Form, Grid, Header, Message, Segment } from 'semantic-ui-react';
 import { Accounts } from 'meteor/accounts-base';
-import { Profiles } from '../../api/profile/Profile';
 import swal from 'sweetalert';
+import { Profiles } from '../../api/profile/Profile';
 
 /**
  * Signup component is similar to signin component, but we create a new user instead.
  */
-
-const options = [
-  { key: 'm', text: 'Mānoa', value: 'manoa' },
-  { key: 'h', text: 'Hilo', value: 'hilo' },
-  { key: 'ha', text: 'Hawaiʻi', value: 'hawaii' },
-  { key: 'ho', text: 'Honolulu', value: 'honolulu' },
-  { key: 'k', text: 'Kapiʻolani', value: 'kapiolani' },
-  { key: 'ka', text: 'Kauaʻi', value: 'kauai' },
-  { key: 'le', text: 'Leeward', value: 'leeward' },
-  { key: 'ma', text: 'Maui', value: 'maui' },
-  { key: 'wi', text: 'Windward', value: 'winward' },
-  { key: 'wo', text: 'West Oʻahu', value: 'westoahu' },
-]
 
 class Signup extends React.Component {
   /** Initialize state fields. */
@@ -35,7 +22,18 @@ class Signup extends React.Component {
       studentID: '',
       campus: '',
       error: '',
-      redirectToReferer: false
+      redirectToReferer: false,
+    };
+    this.state = {
+      email: '',
+      password: '',
+      repassword: '',
+      firstName: '',
+      lastName: '',
+      studentID: '',
+      campus: '',
+      error: '',
+      redirectToReferer: false,
     };
   }
 
@@ -45,27 +43,45 @@ class Signup extends React.Component {
   }
 
   /** Handle Signup submission. Create user account and a profile entry, then redirect to the home page. */
-  submit = () => {
-    const { email, password, firstName, lastName, studentId, campus } = this.state;
-    Accounts.createUser({ email, username: email, password, firstName, lastName, studentId, campus }, (err) => {
-      if (err) {
-        this.setState({ error: err.reason });
-      } else {
-        Profiles.insert({ firstName, lastName, studentId, campus, owner: email },
-            (error) => {
-              if (error) {
-                swal('Error', error.message, 'error');
-              } else {
-                swal('Success', 'Profile created successfully', 'success');
-              }
-            });
-        this.setState({ error: '', redirectToReferer: true });
-      }
-    });
+  handleSubmit = () => {
+    const { email, password, repassword, firstName, lastName, studentId, campus } = this.state;
+    // perform all neccassary validations
+    if (password !== repassword) {
+      this.setState({ error: "Passwords don't match" });
+    } else {
+      Accounts.createUser({ email, username: email, password, firstName, lastName, studentId, campus }, (err) => {
+        if (err) {
+          this.setState({ error: err.reason });
+        } else {
+          Profiles.insert({ firstName, lastName, studentId, campus, owner: email },
+              (error) => {
+                if (error) {
+                  swal('Error', error.message, 'error');
+                } else {
+                  swal('Success', 'Profile created successfully', 'success');
+                }
+              });
+          this.setState({ error: '', redirectToReferer: true });
+        }
+      });
+    }
   }
 
   /** Display the signup form. Redirect to add page after successful registration and login. */
   render() {
+    const options = [
+      { key: 'm', text: 'Mānoa', value: 'manoa' },
+      { key: 'h', text: 'Hilo', value: 'hilo' },
+      { key: 'ha', text: 'Hawaiʻi', value: 'hawaii' },
+      { key: 'ho', text: 'Honolulu', value: 'honolulu' },
+      { key: 'k', text: 'Kapiʻolani', value: 'kapiolani' },
+      { key: 'ka', text: 'Kauaʻi', value: 'kauai' },
+      { key: 'le', text: 'Leeward', value: 'leeward' },
+      { key: 'ma', text: 'Maui', value: 'maui' },
+      { key: 'wi', text: 'Windward', value: 'winward' },
+      { key: 'wo', text: 'West Oʻahu', value: 'westoahu' },
+    ];
+
     const { from } = this.props.location.state || { from: { pathname: '/add' } };
     // if correct authentication, redirect to from: page instead of signup screen
     if (this.state.redirectToReferer) {
@@ -75,10 +91,10 @@ class Signup extends React.Component {
         <Container>
           <Grid textAlign="center" verticalAlign="middle" centered columns={2}>
             <Grid.Column>
-              <Header as="h2" textAlign="center" inverted>
+              <Header as="h2" textAlign="center" style={{ color: 'White' }}>
                 Register your account
               </Header>
-              <Form onSubmit={this.submit} inverted>
+              <Form onSubmit={this.handleSubmit} inverted>
                 <Segment stacked inverted>
                   <Header as="h5" textAlign="center">
                     Account Information
@@ -102,14 +118,15 @@ class Signup extends React.Component {
                       onChange={this.handleChange}
                   />
                   <Form.Input
-                      label="Re-enter Password"
+                      label="repassword"
                       icon="lock"
                       iconPosition="left"
-                      name="re-enter password"
-                      placeholder="re-enter password"
-                      type="re-enter password"
+                      name="repassword"
+                      placeholder="repassword"
+                      type="password"
                       onChange={this.handleChange}
                   />
+
                   <Header as="h5" textAlign="center">
                     Student Information
                   </Header>
@@ -120,7 +137,8 @@ class Signup extends React.Component {
                                 onChange={this.handleChange}/>
                   </Form.Group>
                   <Form.Group widths={'equal'}>
-                    <Form.Input fluid label='Student ID Number' placeholder='XXXXXXXX' name="studentId" type="studentId"
+                    <Form.Input fluid label='Student ID Number' placeholder='XXXXXXXX' name="studentId"
+                                type="studentId"
                                 onChange={this.handleChange}/>
                     <Form.Select
                         fluid
