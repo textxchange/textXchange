@@ -32,7 +32,8 @@ class Discover extends React.Component {
         cost: '13',
         owner: 'john@foo.com',
         class: 'ICS314',
-        image: 'https://media.discordapp.net/attachments/641715894984245258/646252553176219668/textXchange_Logo_4.png',
+        // eslint-disable-next-line max-len
+        image: 'https://lonelyplanet-weblinc.netdna-ssl.com/product_images/lonely_planet_us/the-place-to-be-1/pdp/5a2c7946f92ea161d578fc2d/pdp_main.jpg?c=1512864070',
         datePosted: new Date(),
         condition: 'good',
       },
@@ -41,7 +42,7 @@ class Discover extends React.Component {
         <Container>
           <Header as='h1' textAlign="center" inverted>Browse</Header>
           <Card.Group centered>
-            {book1.map((book, index) => <Book key={index} book={book}/>)}
+            {this.props.books.map((book, index) => <Book key={index} book={book}/>)}
           </Card.Group>
         </Container>
     );
