@@ -58,7 +58,7 @@ Discover.propTypes = {
 /** withTracker connects Meteor data to React components. https://guide.meteor.com/react.html#using-withTracker */
 export default withTracker(() => {
   // Get access to Stuff documents.
-  const subscription = Meteor.subscribe('Book');
+  const subscription = Meteor.subscribe('BookPublic');
   return {
     books: Books.find({}).fetch(),
     ready: subscription.ready(),

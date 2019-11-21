@@ -12,6 +12,8 @@ import Grid from 'semantic-ui-react/dist/commonjs/collections/Grid';
 import Menu from 'semantic-ui-react/dist/commonjs/collections/Menu';
 import Divider from 'semantic-ui-react/dist/commonjs/elements/Divider';
 import Message from 'semantic-ui-react/dist/commonjs/collections/Message';
+import { Books } from '../../api/book/Book';
+import Book from '../components/Book';
 
 /** Renders a table containing all of the Stuff documents. Use <StuffItem> to render each row. */
 class ProfileList extends React.Component {
@@ -24,34 +26,57 @@ class ProfileList extends React.Component {
   /** Render the page once subscriptions have been received. */
   renderPage() {
     return (
-        <Container>
-          <Header as="h2" textAlign="center" inverted>Profile</Header>
-          <Segment inverted>
-          <Image src='/images/george.jpg'  size='small' centered/>
-           <Divider inverted />
-          <Grid textAlign='center' columns={3}>
-            <Grid.Row>
-              <Grid.Column>
-                <Menu fluid vertical inverted>
-                  <Menu.Item className='header'>(username)</Menu.Item>
-                  <Menu.Item className='header'>(firstname lastname)</Menu.Item>
-                  <Menu.Item className='header'>(student id#)</Menu.Item>
-                  <Menu.Item className='header'>(campus)</Menu.Item>
-                  <Menu.Item className='header'>(status)</Menu.Item>
-                  <Menu.Item>(member since 2017)</Menu.Item>
-                </Menu>
-              </Grid.Column>
-            </Grid.Row>
-          </Grid>
-          </Segment>
-        </Container>
+        <div className="beauty">
+          <Container>
+            <Header as="h2" textAlign="center" className="less-margin" inverted>Profile</Header>
+            <Grid celled='internally'>
+              <Grid.Row>
+                <Grid.Column width={3}>
+                  <Menu.Item>
+                    <Image src='https://react.semantic-ui.com/images/wireframe/image.png' />
+                    <br/>
+
+                    <Header as="h2" textAlign="center" className="less-margin"
+                            inverted>Username: </Header>
+                    <Header as="h3" className="less-margin" textAlign="center"
+                            inverted>{this.props.profile[0].owner}</Header>
+
+                    <Header as="h2" textAlign="center" className="less-margin"
+                            inverted>Name: </Header>
+                    <Header as="h3" className="less-margin" textAlign="center"
+                            inverted>{this.props.profile[0].firstName} {this.props.profile[0].lastName} </Header>
+
+                    <Header as="h2" textAlign="center" className="less-margin"
+                            inverted>Student ID: </Header>
+                    <Header className="less-margin" textAlign="center"
+                            inverted>{this.props.profile[0].studentId} </Header>
+
+                    <Header as="h2" textAlign="center" className="less-margin"
+                            inverted>Campus: </Header>
+                    <Header as="h3" className="less-margin" textAlign="center"
+                            inverted>{this.props.profile[0].campus} </Header>
+                  </Menu.Item>
+                </Grid.Column>
+                <Grid.Column width={13}>
+                  <Card.Group>
+                    {this.props.books.map((book, index) => <Book
+                        key={index}
+                        book={book}/>)}
+                  </Card.Group>
+                </Grid.Column>
+              </Grid.Row>
+            </Grid>
+            <br/>
+          </Container>
+        </div>
     );
   }
 }
 
 /** Require an array of Stuff documents in the props. */
 ProfileList.propTypes = {
-  profiles: PropTypes.array.isRequired,
+  profile: PropTypes.array.isRequired,
+  books: PropTypes.array.isRequired,
   ready: PropTypes.bool.isRequired,
 };
 
@@ -59,8 +84,10 @@ ProfileList.propTypes = {
 export default withTracker(() => {
   // Get access to Stuff documents.
   const subscription = Meteor.subscribe('Profile');
+  const bookSub = Meteor.subscribe('Book');
   return {
-    profiles: Profiles.find({}).fetch(),
-    ready: subscription.ready(),
+    profile: Profiles.find({}).fetch(),
+    books: Books.find({}).fetch(),
+    ready: subscription.ready() && bookSub.ready(),
   };
 })(ProfileList);

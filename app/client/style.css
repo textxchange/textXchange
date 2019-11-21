@@ -11,3 +11,7 @@
 .book-image {
   height: 300px;
 }
+
+.less-margin {
+  margin-top: -0.6em !important;
+}
