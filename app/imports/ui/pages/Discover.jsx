@@ -8,7 +8,6 @@ import SubmitField from 'uniforms-semantic/SubmitField';
 import AutoForm from 'uniforms-semantic/AutoForm';
 import { withTracker } from 'meteor/react-meteor-data';
 import { Books } from '../../api/book/Book';
-import Book from '../components/Book';
 import MultiSelectField from '../forms/controllers/MultiSelectField';
 
 /** Create a schema to specify the structure of the data to appear in the form. */
@@ -80,7 +79,6 @@ class Discover extends React.Component {
           <Card.Group centered style={{ paddingTop: '10px' }}>
             {this.state.classUsed.map((classUsed) => {
               const found = _.filter(this.props.books, (book) => book.classUsed === classUsed);
-              console.log(found);
               return found.map((book, index) => <MakeCard book={book} key={index}/>);
             })}
           </Card.Group>
