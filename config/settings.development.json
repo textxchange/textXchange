@@ -1,7 +1,8 @@
 {
   "defaultAccounts": [
     { "email": "admin@foo.com", "password": "changeme", "firstName": "John", "lastName": "Foo","studentId": "00000000","campus": "manoa", "role": "admin" },
-    { "email": "john@foo.com", "password": "changeme", "firstName": "John", "lastName": "Foo","studentId": "00000000","campus": "manoa" }
+    { "email": "john@foo.com", "password": "changeme", "firstName": "John", "lastName": "Foo","studentId": "00000000","campus": "manoa" },
+    { "email": "jane@foo.com", "password": "changeme", "firstName": "Jane", "lastName": "Foo","studentId": "00000001","campus": "manoa" }
   ],
 
   "defaultData": [
@@ -13,7 +14,63 @@
 
   "defaultProfiles": [
     {"firstName": "John", "lastName":  "Foo", "studentId": "00000000", "campus":  "manoa", "owner": "admin@foo.com", "role":  "admin" },
-    {"firstName": "John", "lastName":  "Foo", "studentId": "00000000", "campus":  "manoa", "owner": "john@foo.com" }
+    {"firstName": "John", "lastName":  "Foo", "studentId": "00000000", "campus":  "manoa", "owner": "john@foo.com" },
+    {"firstName": "Jane", "lastName":  "Foo", "studentId": "00000001", "campus":  "manoa", "owner": "jane@foo.com" }
 
+  ],
+
+  "defaultBooks": [
+    {
+      "ISBN": "978159327290",
+      "title": "Practical Malware Analysis",
+      "author": "Michael Sikorski",
+      "yearPublished": "2012-02-01T12:00:00Z",
+      "description": "Malware analysis is big business, and attacks can cost a company dearly. When malware breaches you defenses, you need to act quickly to cure current infections and prevent future ones from occurring. For those who wnt to stay ahead of the latest malware, Practical Malware Analysis will teach you the tools and techniques used by professional analysts.",
+      "cost": "35.99",
+      "owner": "john@foo.com",
+      "classUsed": "ICS 455",
+      "image": "https://covers.openlibrary.org/b/id/8708643-M.jpg",
+      "datePosted": "2019-12-04T12:00:00Z",
+      "condition": "excellent"
+    },
+    {
+      "ISBN": "9781789132359",
+      "title": "Java 11 Cookbook",
+      "author": "Nick Samoylov",
+      "yearPublished": "2018-09-29T12:00:00Z",
+      "description": "For more than three decades, Java has been on the forefront of developing robust software that has helped versatile businesses meet their requirements. Being one of the most widely used programming languages in history, it's imperative for Java developers to discover effective ways of using it in order to take full advantage of the power of the latest Java features. Java 11 Cookbook offers a range of software development solutions with simple and straightforward Java 11 code examples to help you build a modern software system.",
+      "cost": "49.99",
+      "owner": "jane@foo.com",
+      "classUsed": "ICS 111",
+      "image": "https://covers.openlibrary.org/b/id/8508191-L.jpg",
+      "datePosted": "2019-12-03T12:00:00Z",
+      "condition": "good"
+    },
+    {
+      "ISBN": "9781118063330",
+      "title": "Operating System Concepts",
+      "author": "Abraham Silberschatz",
+      "yearPublished": "2018-12-15T12:00:00Z",
+      "description": "Keep pace with the fast-developing world of operating systems. Open-source operating systems, virtual machines, and clustered computing are among the leading fields of operating systems and networking that are rapidly changing.",
+      "cost": "47.99",
+      "owner": "john@foo.com",
+      "classUsed": "ICS 332",
+      "image": "https://covers.openlibrary.org/b/id/7298708-L.jpg",
+      "datePosted": "2019-12-03T12:00:00Z",
+      "condition": "excellent"
+    },
+    {
+      "ISBN": "9781937585532",
+      "title": "Alzheimers Disease",
+      "author": "Alia Bucciarelli",
+      "yearPublished": "2016-04-06T12:00:00Z",
+      "description": "Alzheimers disease affects the brain and destroys memory and thinking skills over time. As many as five million adults in the U.S. have Alzheimers disease today, and that number will continue to grow as the population ages.",
+      "cost": "23.99",
+      "owner": "john@foo.com",
+      "classUsed": "PH 310",
+      "image": "https://covers.openlibrary.org/b/id/7756488-L.jpg",
+      "datePosted": "2019-12-01T12:00:00Z",
+      "condition": "poor"
+    }
   ]
 }
