@@ -42,7 +42,7 @@ class Discover extends React.Component {
         <Container>
           <Header as='h1' textAlign="center" inverted>Browse</Header>
           <Card.Group centered>
-            {this.props.books.map((book, index) => <Book key={index} book={book}/>)}
+            {this.props.books.map((book, index) => <Book key={index} book={book} Books={Books}/>)}
           </Card.Group>
         </Container>
     );

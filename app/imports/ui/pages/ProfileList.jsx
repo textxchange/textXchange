@@ -14,6 +14,7 @@ import Divider from 'semantic-ui-react/dist/commonjs/elements/Divider';
 import Message from 'semantic-ui-react/dist/commonjs/collections/Message';
 import { Books } from '../../api/book/Book';
 import Book from '../components/Book';
+import Button from 'semantic-ui-react/dist/commonjs/elements/Button';
 
 /** Renders a table containing all of the Stuff documents. Use <StuffItem> to render each row. */
 class ProfileList extends React.Component {
@@ -61,7 +62,9 @@ class ProfileList extends React.Component {
                   <Card.Group>
                     {this.props.books.map((book, index) => <Book
                         key={index}
-                        book={book}/>)}
+                        book={book}
+                      Books={Books}
+                    />)}
                   </Card.Group>
                 </Grid.Column>
               </Grid.Row>
