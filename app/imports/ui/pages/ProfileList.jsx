@@ -34,28 +34,34 @@ class ProfileList extends React.Component {
             <Container className="profile-container">
               <Grid>
                   <Grid.Row className="profile-top-row">
+
                       <Grid.Column width={4}>
                         <Image className="profile-picture" src='https://react.semantic-ui.com/images/wireframe/image.png' />
                       </Grid.Column>
+
                       <Grid.Column width={9}>
                         <Container>
                           <Grid className="profile-info" columns='equal'>
                             <Grid.Row>
+                              
                               <Grid.Column width={6}>
                                 <List className="profile-list" inverted size="huge">
                                   <List.Item>
                                     <List.Header>Name:</List.Header>
                                     {this.props.profile[0].firstName} {this.props.profile[0].lastName}
                                   </List.Item>
+
                                   <List.Item>
                                     <List.Header>Email:</List.Header>{this.props.profile[0].owner}
                                   </List.Item>
+
                                   <List.Item>
                                     <List.Header>Campus: </List.Header>
                                     {this.props.profile[0].campus}
                                   </List.Item>
                                 </List>
                               </Grid.Column>
+
                               <Grid.Column column={10}>
                                 <List className="profile-list" inverted size="huge">
                                   <List.Item>
@@ -64,11 +70,13 @@ class ProfileList extends React.Component {
                                   </List.Item>
                                 </List>
                               </Grid.Column>
+
                             </Grid.Row>
                           </Grid>
                         </Container>
                       </Grid.Column>
                   </Grid.Row>
+
                   <Grid.Row>
                     <Container className="profile-bottom-row">
                       <Header as="h2" textAlign="center" inverted>Selling</Header>
@@ -80,6 +88,7 @@ class ProfileList extends React.Component {
                       </Card.Group>
                     </Container>
                   </Grid.Row>
+
               </Grid>
             </Container>
           </Container>
