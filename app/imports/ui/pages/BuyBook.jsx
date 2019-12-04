@@ -1,7 +1,7 @@
 import React from 'react';
 import { Meteor } from 'meteor/meteor';
 import SimpleSchema from 'simpl-schema';
-import { Card, Header, Container, Loader, Segment, Image, Menu } from 'semantic-ui-react';
+import { Card, Header, Container, Loader, Segment, Image } from 'semantic-ui-react';
 import PropTypes from 'prop-types';
 import { _ } from 'meteor/underscore';
 import SubmitField from 'uniforms-semantic/SubmitField';
@@ -10,14 +10,9 @@ import { withTracker } from 'meteor/react-meteor-data';
 import { Books } from '../../api/book/Book';
 import MultiSelectField from '../forms/controllers/MultiSelectField';
 import Button from 'semantic-ui-react/dist/commonjs/elements/Button';
-import { NavLink } from 'react-router-dom';
+import ProfileBook from '../components/ProfileBook';
 
 /** Create a schema to specify the structure of the data to appear in the form. */
-const makeSchema = (allClasses) => new SimpleSchema({
-  classUsed: { type: Array, label: 'Classes', optional: true },
-  'classUsed.$': { type: String, allowedValues: allClasses },
-});
-
 const right = { float: 'right' };
 const noPadding = { paddingBottom: '7px' };
 
@@ -40,13 +35,6 @@ const MakeCard = (props) => (
           <span style={right}> Posted {props.book.datePosted.toLocaleDateString()} </span>
         </Card.Meta>
       </Card.Content>
-      <Card.Content extra>
-        <div className='ui two buttons'>
-          <Button basic color='green' pointing="top right" text="Buy Book" as={NavLink} exact to="/buybook" >
-            Buy Book
-          </Button>
-        </div>
-      </Card.Content>
     </Card>
 );
 
@@ -56,7 +44,7 @@ MakeCard.propTypes = {
 };
 
 /** Renders a single row in the List Stuff table. See pages/ListStuff.jsx. */
-class Discover extends React.Component {
+class BuyBook extends React.Component {
 
   constructor(props) {
     super(props);
@@ -73,22 +61,17 @@ class Discover extends React.Component {
   }
 
   renderPage() {
-    const allClasses = _.pluck(Books.find().fetch(), 'classUsed');
-    const formSchema = makeSchema(allClasses);
     // const found = _.filter(this.props.books, (book) => book.classUsed === this.state.classUsed[0]);
     return (
         <Container>
-          <Header as='h1' textAlign="center" inverted>Browse</Header>
-          <AutoForm schema={formSchema} onSubmit={data => this.submit(data)}>
-            <Segment>
-              <MultiSelectField name='classUsed' showInlineError={true} placeholder={'Choose your classes'}/>
-              <SubmitField value='Submit'/>
-            </Segment>
-          </AutoForm>
+          <Header as='h1' textAlign="center" inverted>Buy Book</Header>
+
           <Card.Group centered style={{ paddingTop: '10px' }}>
-            {this.state.classUsed.map((classUsed) => {
-              const found = _.filter(this.props.books, (book) => book.classUsed === classUsed);
-              return found.map((book, index) => <MakeCard book={book} key={index}/>);
+            {this.props.books.map((book, index) => <MakeCard
+                key={index}
+                book={book}
+                Books={Books}
+            />)}
             })}
           </Card.Group>
         </Container>
@@ -97,7 +80,7 @@ class Discover extends React.Component {
 }
 
 /** Require a document to be passed to this component. */
-Discover.propTypes = {
+BuyBook.propTypes = {
   books: PropTypes.array.isRequired,
   ready: PropTypes.bool.isRequired,
 };
@@ -111,4 +94,4 @@ export default withTracker(() => {
     books: Books.find({}).fetch(),
     ready: subscription.ready(),
   };
-})(Discover);
+})(BuyBook);
