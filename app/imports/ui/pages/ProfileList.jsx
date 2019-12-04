@@ -1,6 +1,6 @@
 import React from 'react';
 import { Meteor } from 'meteor/meteor';
-import { Container, Table, Header, Loader } from 'semantic-ui-react';
+import { Container, Table, Header, Loader, Label } from 'semantic-ui-react';
 import { Profiles } from '/imports/api/profile/Profile';
 import { withTracker } from 'meteor/react-meteor-data';
 import PropTypes from 'prop-types';
@@ -29,43 +29,47 @@ class ProfileList extends React.Component {
         <div className="beauty">
           <Container>
             <Header as="h2" textAlign="center" className="less-margin" inverted>Profile</Header>
-            <Grid celled='internally'>
-              <Grid.Row>
-                <Grid.Column width={3}>
-                  <Menu.Item>
-                    <Image src='https://react.semantic-ui.com/images/wireframe/image.png' />
-                    <br/>
+            <Container className="profile-container">
+              <Grid>
+                  <Grid.Row className="profile-top-row">
+                      <Grid.Column width={3}>
+                        <Image src='https://react.semantic-ui.com/images/wireframe/image.png' />
+                      </Grid.Column>
+                      <Grid.Column width={13}>
 
-                    <Header as="h2" textAlign="center" className="less-margin"
-                            inverted>Username: </Header>
-                    <Header as="h3" className="less-margin" textAlign="center"
-                            inverted>{this.props.profile[0].owner}</Header>
+                        <Container className="profile-info">
+                          <Header as="h2" textAlign="left" className="less-margin" inverted>Username: </Header>
+                          <Header as="h5" className="less-margin" textAlign="left" inverted>{this.props.profile[0].owner}</Header>
+                        </Container>
 
-                    <Header as="h2" textAlign="center" className="less-margin"
-                            inverted>Name: </Header>
-                    <Header as="h3" className="less-margin" textAlign="center"
-                            inverted>{this.props.profile[0].firstName} {this.props.profile[0].lastName} </Header>
+                        <Container className="profile-info">
+                          <Header as="h2" textAlign="left" className="less-margin" inverted>Name: </Header>
+                          <Header as="h5"className="less-margin" textAlign="left" inverted>{this.props.profile[0].firstName} {this.props.profile[0].lastName} </Header>
+                        </Container>
 
-                    <Header as="h2" textAlign="center" className="less-margin"
-                            inverted>Student ID: </Header>
-                    <Header className="less-margin" textAlign="center"
-                            inverted>{this.props.profile[0].studentId} </Header>
+                        <Container className="profile-info">
+                          <Header as="h2" textAlign="left" className="less-margin" inverted>Student ID: </Header>
+                          <Header as="h5" className="less-margin" textAlign="left" inverted>{this.props.profile[0].studentId} </Header>
+                        </Container>
 
-                    <Header as="h2" textAlign="center" className="less-margin"
-                            inverted>Campus: </Header>
-                    <Header as="h3" className="less-margin" textAlign="center"
-                            inverted>{this.props.profile[0].campus} </Header>
-                  </Menu.Item>
-                </Grid.Column>
-                <Grid.Column width={13}>
-                  <Card.Group>
-                    {this.props.books.map((book, index) => <Book
-                        key={index}
-                        book={book}/>)}
-                  </Card.Group>
-                </Grid.Column>
-              </Grid.Row>
-            </Grid>
+                        <Container className="profile-info">
+                          <Header as="h2" textAlign="left" className="less-margin" inverted>Campus: </Header>
+                          <Header as="h5" className="less-margin" textAlign="left" inverted>{this.props.profile[0].campus} </Header>
+                        </Container>
+
+                      </Grid.Column>
+                  </Grid.Row>
+                  <Grid.Row>
+                    <Container className="profile-bottom-row">
+                      <Card.Group>
+                        {this.props.books.map((book, index) => <Book
+                            key={index}
+                            book={book}/>)}
+                      </Card.Group>
+                    </Container>
+                  </Grid.Row>
+              </Grid>
+            </Container>
             <br/>
           </Container>
         </div>

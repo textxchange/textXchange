@@ -3,11 +3,6 @@
   background-size: cover;
 }
 
-.profile-pic {
-  height: 20px;
-  margin: 0 0 0 0 !important;
-}
-
 .book-image {
   height: 300px;
 }
@@ -15,3 +10,28 @@
 .less-margin {
   margin-top: -0.6em !important;
 }
+
+.profile-top-row {
+  background-color: #303030;
+  margin: 10px;
+}
+
+.profile-bottom-row {
+  background-color: #303030;
+  margin: 4px;
+  padding: 10px;
+}
+
+.profile-info {
+  margin: 15px;
+}
+
+.profile-info {
+  font-size: 10px;
+}
+
+.profile-pic {
+  height: 18px;
+  margin: 0 0 0 0 !important;
+}
+
