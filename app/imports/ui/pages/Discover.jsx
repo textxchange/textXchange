@@ -1,48 +1,86 @@
 import React from 'react';
 import { Meteor } from 'meteor/meteor';
-import { Card, Header, Container } from 'semantic-ui-react';
+import SimpleSchema from 'simpl-schema';
+import { Card, Header, Container, Loader, Segment, Image } from 'semantic-ui-react';
 import PropTypes from 'prop-types';
+import { _ } from 'meteor/underscore';
+import SubmitField from 'uniforms-semantic/SubmitField';
+import AutoForm from 'uniforms-semantic/AutoForm';
 import { withTracker } from 'meteor/react-meteor-data';
-import Book from '../components/Book';
 import { Books } from '../../api/book/Book';
+import MultiSelectField from '../forms/controllers/MultiSelectField';
+
+/** Create a schema to specify the structure of the data to appear in the form. */
+const makeSchema = (allClasses) => new SimpleSchema({
+  classUsed: { type: Array, label: 'Classes', optional: true },
+  'classUsed.$': { type: String, allowedValues: allClasses },
+});
+
+const right = { float: 'right' };
+const noPadding = { paddingBottom: '7px' };
+
+/** Component for layout out a Book Card. */
+const MakeCard = (props) => (
+    <Card>
+      <Image className='book-image' src={props.book.image}/>
+      <Card.Content>
+        <Card.Header>{props.book.title}</Card.Header>
+        <Card.Meta>{props.book.author}</Card.Meta>
+        <Card.Description> {props.book.description} </Card.Description>
+      </Card.Content>
+      <Card.Content style={noPadding}>
+        <Card.Meta>
+          {/* eslint-disable-next-line max-len */}
+          <Image className='profile-pic' floated='left'
+              /* eslint-disable-next-line max-len */
+                 src='https://media.discordapp.net/attachments/641715894984245258/646252553176219668/textXchange_Logo_4.png'/>
+          $ {props.book.cost}
+          <span style={right}> Posted {props.book.datePosted.toLocaleDateString()} </span>
+        </Card.Meta>
+      </Card.Content>
+    </Card>
+);
+
+/** Require a document to be passed to this component. */
+MakeCard.propTypes = {
+  book: PropTypes.object.isRequired,
+};
 
 /** Renders a single row in the List Stuff table. See pages/ListStuff.jsx. */
 class Discover extends React.Component {
+
+  constructor(props) {
+    super(props);
+    this.state = { classUsed: [] };
+  }
+
+  submit(data) {
+    this.setState({ classUsed: data.classUsed || [] });
+  }
+
+  /** If the subscription(s) have been received, render the page, otherwise show a loading icon. */
   render() {
-    const book1 = [
-      {
-        ISBN: '12345',
-        title: 'Book',
-        author: 'Jeff Wong',
-        yearPublished: new Date(),
-        description: 'This is a book',
-        cost: '13',
-        owner: 'john@foo.com',
-        class: 'ICS314',
-        image: 'https://media.discordapp.net/attachments/641715894984245258/646252553176219668/textXchange_Logo_4.png',
-        datePosted: new Date(),
-        condition: 'good',
-      },
-      {
-        ISBN: '12345',
-        title: 'Book',
-        author: 'Jeff Wong',
-        yearPublished: new Date(),
-        description: 'This is a book',
-        cost: '13',
-        owner: 'john@foo.com',
-        class: 'ICS314',
-        // eslint-disable-next-line max-len
-        image: 'https://lonelyplanet-weblinc.netdna-ssl.com/product_images/lonely_planet_us/the-place-to-be-1/pdp/5a2c7946f92ea161d578fc2d/pdp_main.jpg?c=1512864070',
-        datePosted: new Date(),
-        condition: 'good',
-      },
-    ];
+    return (this.props.ready) ? this.renderPage() : <Loader active>Getting data</Loader>;
+  }
+
+  renderPage() {
+    const allClasses = _.pluck(Books.find().fetch(), 'classUsed');
+    const formSchema = makeSchema(allClasses);
+    // const found = _.filter(this.props.books, (book) => book.classUsed === this.state.classUsed[0]);
     return (
         <Container>
           <Header as='h1' textAlign="center" inverted>Browse</Header>
-          <Card.Group centered>
-            {this.props.books.map((book, index) => <Book key={index} book={book} Books={Books}/>)}
+          <AutoForm schema={formSchema} onSubmit={data => this.submit(data)}>
+            <Segment>
+              <MultiSelectField name='classUsed' showInlineError={true} placeholder={'Choose your classes'}/>
+              <SubmitField value='Submit'/>
+            </Segment>
+          </AutoForm>
+          <Card.Group centered style={{ paddingTop: '10px' }}>
+            {this.state.classUsed.map((classUsed) => {
+              const found = _.filter(this.props.books, (book) => book.classUsed === classUsed);
+              return found.map((book, index) => <MakeCard book={book} key={index}/>);
+            })}
           </Card.Group>
         </Container>
     );
@@ -52,6 +90,7 @@ class Discover extends React.Component {
 /** Require a document to be passed to this component. */
 Discover.propTypes = {
   books: PropTypes.array.isRequired,
+  ready: PropTypes.bool.isRequired,
 };
 
 /** Wrap this component in withRouter since we use the <Link> React Router element. */
