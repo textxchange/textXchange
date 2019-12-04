@@ -32,7 +32,7 @@ const MakeCard = (props) => (
         <Card.Meta>
           {/* eslint-disable-next-line max-len */}
           <Image className='profile-pic' floated='left'
-                 /* eslint-disable-next-line max-len */
+              /* eslint-disable-next-line max-len */
                  src='https://media.discordapp.net/attachments/641715894984245258/646252553176219668/textXchange_Logo_4.png'/>
           $ {props.book.cost}
           <span style={right}> Posted {props.book.datePosted.toLocaleDateString()} </span>
