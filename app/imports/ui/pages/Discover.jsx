@@ -1,7 +1,7 @@
 import React from 'react';
 import { Meteor } from 'meteor/meteor';
 import SimpleSchema from 'simpl-schema';
-import { Card, Header, Container, Loader, Segment, Image } from 'semantic-ui-react';
+import { Card, Header, Container, Loader, Segment, Image, Label } from 'semantic-ui-react';
 import PropTypes from 'prop-types';
 import { _ } from 'meteor/underscore';
 import SubmitField from 'uniforms-semantic/SubmitField';
@@ -27,10 +27,12 @@ const MakeCard = (props) => (
         <Card.Header>{props.book.title}</Card.Header>
         <Card.Meta>{props.book.author}</Card.Meta>
         <Card.Description> {props.book.description} </Card.Description>
+        <Label tag>
+          {props.book.classUsed}
+        </Label>
       </Card.Content>
       <Card.Content style={noPadding}>
         <Card.Meta>
-          {/* eslint-disable-next-line max-len */}
           <Image className='profile-pic' floated='left'
               /* eslint-disable-next-line max-len */
                  src='https://media.discordapp.net/attachments/641715894984245258/646252553176219668/textXchange_Logo_4.png'/>
