@@ -2,9 +2,21 @@ import React from 'react';
 import { Card, Image } from 'semantic-ui-react';
 import PropTypes from 'prop-types';
 import { withRouter } from 'react-router-dom';
+import Button from 'semantic-ui-react/dist/commonjs/elements/Button';
+import Confirm from 'semantic-ui-react/dist/commonjs/addons/Confirm';
 
 /** Renders a single row in the List Stuff table. See pages/ListStuff.jsx. */
-class Book extends React.Component {
+class ProfileBook extends React.Component {
+
+  delete(id) {
+    this.props.Books.remove(id);
+    this.setState({ open: false })
+  }
+
+  state = { open: false }
+  open = () => this.setState({ open: true })
+  close = () => this.setState({ open: false })
+
   render() {
     const right = { float: 'right' };
     const noPadding = { paddingBottom: '7px' };
@@ -26,15 +38,31 @@ class Book extends React.Component {
               <span style={right}> Posted {this.props.book.datePosted.toLocaleDateString()} </span>
             </Card.Meta>
           </Card.Content>
+          <Card.Content extra>
+            <div className='ui two buttons'>
+              <Button basic color='red' onClick={this.open}>
+                Delete
+              </Button>
+              <Confirm
+                  open={this.state.open}
+                  onCancel={this.close}
+                  onConfirm={() => this.delete(this.props.book._id)}
+              />
+              <Button basic color='green'>
+                Edit
+              </Button>
+            </div>
+          </Card.Content>
         </Card>
     );
   }
 }
 
 /** Require a document to be passed to this component. */
-Book.propTypes = {
+ProfileBook.propTypes = {
   book: PropTypes.object.isRequired,
+  Books: PropTypes.object.isRequired,
 };
 
 /** Wrap this component in withRouter since we use the <Link> React Router element. */
-export default withRouter(Book);
+export default withRouter(ProfileBook);

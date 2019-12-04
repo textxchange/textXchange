@@ -13,14 +13,15 @@ import Menu from 'semantic-ui-react/dist/commonjs/collections/Menu';
 import Divider from 'semantic-ui-react/dist/commonjs/elements/Divider';
 import Message from 'semantic-ui-react/dist/commonjs/collections/Message';
 import { Books } from '../../api/book/Book';
-import Book from '../components/Book';
+import ProfileBook from '../components/ProfileBook';
 import Button from 'semantic-ui-react/dist/commonjs/elements/Button';
+import Confirm from 'semantic-ui-react/dist/commonjs/addons/Confirm';
+
 
 /** Renders a table containing all of the Stuff documents. Use <StuffItem> to render each row. */
 class ProfileList extends React.Component {
-
   /** If the subscription(s) have been received, render the page, otherwise show a loading icon. */
-  render() {
+  render(){
     return (this.props.ready) ? this.renderPage() : <Loader active>Getting data</Loader>;
   }
 
@@ -60,10 +61,10 @@ class ProfileList extends React.Component {
                 </Grid.Column>
                 <Grid.Column width={13}>
                   <Card.Group>
-                    {this.props.books.map((book, index) => <Book
+                    {this.props.books.map((book, index) => <ProfileBook
                         key={index}
                         book={book}
-                      Books={Books}
+                        Books={Books}
                     />)}
                   </Card.Group>
                 </Grid.Column>
