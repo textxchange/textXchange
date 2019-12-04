@@ -1,6 +1,6 @@
 import React from 'react';
 import { Meteor } from 'meteor/meteor';
-import { Container, Table, Header, Loader, Label } from 'semantic-ui-react';
+import { Container, Table, Header, Loader, List } from 'semantic-ui-react';
 import { Profiles } from '/imports/api/profile/Profile';
 import { withTracker } from 'meteor/react-meteor-data';
 import PropTypes from 'prop-types';
@@ -35,34 +35,44 @@ class ProfileList extends React.Component {
                       <Grid.Column width={4}>
                         <Image className="profile-picture" src='https://react.semantic-ui.com/images/wireframe/image.png' />
                       </Grid.Column>
-                      <Grid.Column width={10}>
-
-                        <Container className="profile-info">
-                          <Header as="h2" textAlign="left" className="less-margin" inverted>Username: </Header>
-                          <Header as="h5"className="less-margin" textAlign="left" inverted>{this.props.profile[0].owner}</Header>
+                      <Grid.Column width={9}>
+                        <Container>
+                          <Grid className="profile-info" columns='equal'>
+                            <Grid.Row>
+                              <Grid.Column width={6}>
+                                <List className="profile-list" inverted size="huge">
+                                  <List.Item>
+                                    <List.Header>Name:</List.Header>
+                                    {this.props.profile[0].firstName} {this.props.profile[0].lastName}
+                                  </List.Item>
+                                  <List.Item>
+                                    <List.Header>Email:</List.Header>{this.props.profile[0].owner}
+                                  </List.Item>
+                                  <List.Item>
+                                    <List.Header>Campus: </List.Header>
+                                    {this.props.profile[0].campus}
+                                  </List.Item>
+                                </List>
+                              </Grid.Column>
+                              <Grid.Column column={10}>
+                                <List className="profile-list" inverted size="huge">
+                                  <List.Item>
+                                    <List.Header>Description: </List.Header>
+                                    [Description will go here]
+                                  </List.Item>
+                                </List>
+                              </Grid.Column>
+                            </Grid.Row>
+                          </Grid>
                         </Container>
-
-                        <Container className="profile-info">
-                          <Header as="h2" textAlign="left" className="less-margin" inverted>Name: </Header>
-                          <Header as="h5"className="less-margin" textAlign="left" inverted>{this.props.profile[0].firstName} {this.props.profile[0].lastName} </Header>
-                        </Container>
-
-                        <Container className="profile-info">
-                          <Header as="h2" textAlign="left" className="less-margin" inverted>Student ID: </Header>
-                          <Header as="h5" className="less-margin" textAlign="left" inverted>{this.props.profile[0].studentId} </Header>
-                        </Container>
-
-                        <Container className="profile-info">
-                          <Header as="h2" textAlign="left" className="less-margin" inverted>Campus: </Header>
-                          <Header as="h5" className="less-margin" textAlign="left" inverted>{this.props.profile[0].campus} </Header>
-                        </Container>
-
                       </Grid.Column>
                   </Grid.Row>
                   <Grid.Row>
                     <Container className="profile-bottom-row">
+                      <Header as="h2" textAlign="center" inverted>Selling</Header>
                       <Card.Group>
                         {this.props.books.map((book, index) => <Book
+                            className="profile-book"
                             key={index}
                             book={book}/>)}
                       </Card.Group>

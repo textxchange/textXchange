@@ -15,21 +15,20 @@
 .profile-top-row {
   background-color: #303030;
   margin: 4px;
+  padding: 30px !important;
+  border-radius: 5px;
 }
 
 .profile-bottom-row {
   background-color: #303030;
   margin: 4px;
   padding: 30px;
+  border-radius: 5px;
 }
 
 .profile-info {
   margin: 20px;
   color: white;
-}
-
-.profile-info {
-  font-size: 10px;
 }
 
 .profile-pic {
@@ -38,11 +37,15 @@
 }
 
 .profile-picture {
-  width: 250px;
-  height: 250px;
+  width: 210px;
+  height: 210px;
   border-radius: 50%;
 }
 
 .profile-container {
   padding: 40px;
+}
+
+.profile-list {
+  color: white;
 }
