@@ -1,6 +1,6 @@
 import React from 'react';
 import { Books } from '/imports/api/book/Book';
-import { Grid, Segment, Header } from 'semantic-ui-react';
+import { Grid, Segment, Header, Form } from 'semantic-ui-react';
 import AutoForm from 'uniforms-semantic/AutoForm';
 import TextField from 'uniforms-semantic/TextField';
 import NumField from 'uniforms-semantic/NumField';
@@ -62,14 +62,20 @@ class AddBook extends React.Component {
               fRef = ref;
             }} schema={formSchema} onSubmit={data => this.submit(data, fRef)}>
               <Segment>
-                <TextField name='title'/>
-                <TextField name='author'/>
-                <TextField name='yearPublished'/>
-                <NumField name='ISBN' decimal={false}/>
+                <Form.Group widths={'equal'}>
+                  <TextField name='title'/>
+                  <TextField name='author'/>
+                </Form.Group>
+                <Form.Group widths={'equal'}>
+                  <TextField name='yearPublished'/>
+                  <NumField name='ISBN' decimal={false}/>
+                </Form.Group>
                 <LongTextField name='description'/>
-                <NumField iconLeft='dollar' name='cost' decimal={true}/>
-                <TextField name='classUsed'/>
-                <SelectField name='condition'/>
+                <Form.Group widths={'equal'}>
+                  <NumField iconLeft='dollar' name='cost' decimal={true}/>
+                  <TextField name='classUsed'/>
+                  <SelectField name='condition'/>
+                </Form.Group>
                 <SubmitField value='Submit'/>
                 <ErrorsField/>
               </Segment>
