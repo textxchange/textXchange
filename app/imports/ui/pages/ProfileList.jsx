@@ -32,14 +32,14 @@ class ProfileList extends React.Component {
             <Container className="profile-container">
               <Grid>
                   <Grid.Row className="profile-top-row">
-                      <Grid.Column width={3}>
-                        <Image src='https://react.semantic-ui.com/images/wireframe/image.png' />
+                      <Grid.Column width={4}>
+                        <Image className="profile-picture" src='https://react.semantic-ui.com/images/wireframe/image.png' />
                       </Grid.Column>
-                      <Grid.Column width={13}>
+                      <Grid.Column width={10}>
 
                         <Container className="profile-info">
                           <Header as="h2" textAlign="left" className="less-margin" inverted>Username: </Header>
-                          <Header as="h5" className="less-margin" textAlign="left" inverted>{this.props.profile[0].owner}</Header>
+                          <Header as="h5"className="less-margin" textAlign="left" inverted>{this.props.profile[0].owner}</Header>
                         </Container>
 
                         <Container className="profile-info">
