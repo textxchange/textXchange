@@ -19,7 +19,6 @@ class Signup extends React.Component {
       password: '',
       firstName: '',
       lastName: '',
-      studentID: '',
       campus: '',
       error: '',
       redirectToReferer: false,
@@ -30,7 +29,6 @@ class Signup extends React.Component {
       repassword: '',
       firstName: '',
       lastName: '',
-      studentID: '',
       campus: '',
       error: '',
       redirectToReferer: false,
@@ -137,9 +135,6 @@ class Signup extends React.Component {
                                 onChange={this.handleChange}/>
                   </Form.Group>
                   <Form.Group widths={'equal'}>
-                    <Form.Input fluid label='Student ID Number' placeholder='XXXXXXXX' name="studentId"
-                                type="studentId"
-                                onChange={this.handleChange}/>
                     <Form.Select
                         fluid
                         label='Campus'
