@@ -1,7 +1,8 @@
 import React from 'react';
 import { Card, Image } from 'semantic-ui-react';
+import { Books } from '/imports/api/book/Book';
 import PropTypes from 'prop-types';
-import { withRouter } from 'react-router-dom';
+import { Redirect, withRouter } from 'react-router-dom';
 import Button from 'semantic-ui-react/dist/commonjs/elements/Button';
 import Confirm from 'semantic-ui-react/dist/commonjs/addons/Confirm';
 
@@ -9,12 +10,18 @@ import Confirm from 'semantic-ui-react/dist/commonjs/addons/Confirm';
 class ProfileBook extends React.Component {
 
   delete(id) {
-    this.props.Books.remove(id);
-    this.setState({ open: false })
+    Books.remove(id);
+    this.setState({ open: false });
+  }
+
+  edit(id) {
+    return <Redirect to={'/'}/>;
   }
 
   state = { open: false }
+
   open = () => this.setState({ open: true })
+
   close = () => this.setState({ open: false })
 
   render() {
@@ -33,6 +40,7 @@ class ProfileBook extends React.Component {
             <Card.Meta>
               {/* eslint-disable-next-line max-len */}
               <Image className='profile-pic' floated='left'
+                     /* eslint-disable-next-line max-len */
                      src='https://media.discordapp.net/attachments/641715894984245258/646252553176219668/textXchange_Logo_4.png'/>
               $ {this.props.book.cost}
               <span style={right}> Posted {this.props.book.datePosted.toLocaleDateString()} </span>
@@ -61,7 +69,7 @@ class ProfileBook extends React.Component {
 /** Require a document to be passed to this component. */
 ProfileBook.propTypes = {
   book: PropTypes.object.isRequired,
-  Books: PropTypes.object.isRequired,
+  Books: PropTypes.array.isRequired,
 };
 
 /** Wrap this component in withRouter since we use the <Link> React Router element. */
