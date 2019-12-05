@@ -30,9 +30,3 @@ if (Books.find().count() === 0) {
     Meteor.settings.defaultBooks.map(book => addBook(book));
   }
 }
-
-
-
-
-
-

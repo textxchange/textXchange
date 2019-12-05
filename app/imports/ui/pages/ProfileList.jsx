@@ -1,19 +1,12 @@
 import React from 'react';
 import { Meteor } from 'meteor/meteor';
-import { Container, Table, Header, Loader, List } from 'semantic-ui-react';
+import { Container, Header, Loader, List } from 'semantic-ui-react';
 import { Profiles } from '/imports/api/profile/Profile';
 import { withTracker } from 'meteor/react-meteor-data';
 import PropTypes from 'prop-types';
 import Card from 'semantic-ui-react/dist/commonjs/views/Card';
 import Image from 'semantic-ui-react/dist/commonjs/elements/Image';
-import Icon from 'semantic-ui-react/dist/commonjs/elements/Icon';
-import Segment from 'semantic-ui-react/dist/commonjs/elements/Segment';
 import Grid from 'semantic-ui-react/dist/commonjs/collections/Grid';
-import Menu from 'semantic-ui-react/dist/commonjs/collections/Menu';
-import Divider from 'semantic-ui-react/dist/commonjs/elements/Divider';
-import Message from 'semantic-ui-react/dist/commonjs/collections/Message';
-import Button from 'semantic-ui-react/dist/commonjs/elements/Button';
-import Confirm from 'semantic-ui-react/dist/commonjs/addons/Confirm';
 import { Books } from '../../api/book/Book';
 import ProfileBook from '../components/ProfileBook';
 
