@@ -69,7 +69,7 @@ class BuyBook extends React.Component {
 
           <Card.Group centered style={{ paddingTop: '10px' }}>
             <Card>
-              { console.log(this.select.author) }
+              { console.log(this.props.location.author) }
               <Image className='book-image' src={this.select.image}/>
               <Card.Content>
                 <Card.Header>{this.select.title}</Card.Header>
