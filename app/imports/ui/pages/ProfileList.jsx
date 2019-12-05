@@ -12,16 +12,16 @@ import Grid from 'semantic-ui-react/dist/commonjs/collections/Grid';
 import Menu from 'semantic-ui-react/dist/commonjs/collections/Menu';
 import Divider from 'semantic-ui-react/dist/commonjs/elements/Divider';
 import Message from 'semantic-ui-react/dist/commonjs/collections/Message';
-import { Books } from '../../api/book/Book';
-import ProfileBook from '../components/ProfileBook';
 import Button from 'semantic-ui-react/dist/commonjs/elements/Button';
 import Confirm from 'semantic-ui-react/dist/commonjs/addons/Confirm';
+import { Books } from '../../api/book/Book';
+import ProfileBook from '../components/ProfileBook';
 
 
 /** Renders a table containing all of the Stuff documents. Use <StuffItem> to render each row. */
 class ProfileList extends React.Component {
   /** If the subscription(s) have been received, render the page, otherwise show a loading icon. */
-  render(){
+  render() {
     return (this.props.ready) ? this.renderPage() : <Loader active>Getting data</Loader>;
   }
 
@@ -36,14 +36,15 @@ class ProfileList extends React.Component {
                   <Grid.Row className="profile-top-row">
 
                       <Grid.Column width={4}>
-                        <Image className="profile-picture" src='https://react.semantic-ui.com/images/wireframe/image.png' />
+                        <Image className="profile-picture"
+                               src='https://react.semantic-ui.com/images/wireframe/image.png' />
                       </Grid.Column>
 
                       <Grid.Column width={9}>
                         <Container>
                           <Grid className="profile-info" columns='equal'>
                             <Grid.Row>
-                              
+
                               <Grid.Column width={6}>
                                 <List className="profile-list" inverted size="huge">
                                   <List.Item>
@@ -84,7 +85,8 @@ class ProfileList extends React.Component {
                         {this.props.books.map((book, index) => <ProfileBook
                             className="profile-book"
                             key={index}
-                            book={book}/>)}
+                            book={book}
+                            Books={this.props.books}/>)}
                       </Card.Group>
                     </Container>
                   </Grid.Row>
