@@ -9,51 +9,13 @@ import AutoForm from 'uniforms-semantic/AutoForm';
 import { withTracker } from 'meteor/react-meteor-data';
 import { Books } from '../../api/book/Book';
 import MultiSelectField from '../forms/controllers/MultiSelectField';
+import DiscoverBook from '../components/DiscoverBook';
 
 /** Create a schema to specify the structure of the data to appear in the form. */
 const makeSchema = (allClasses) => new SimpleSchema({
   classUsed: { type: Array, label: 'Classes', optional: true },
   'classUsed.$': { type: String, allowedValues: allClasses },
 });
-
-const right = { float: 'right' };
-const noPadding = { paddingBottom: '7px' };
-
-/** Component for layout out a Book Card. */
-const MakeCard = (props) => (
-    <Card>
-      <Image className='book-image' src={props.book.image}/>
-      <Card.Content>
-        <Card.Header>{props.book.title}</Card.Header>
-        <Card.Meta>{props.book.author}</Card.Meta>
-        <Card.Description>
-          <Popup
-              content={props.book.description}
-              on='click'
-              trigger={<Button content='View Description' />}
-          />
-          <Label tag floated='right'>
-            {props.book.classUsed}
-          </Label>
-        </Card.Description>
-      </Card.Content>
-      <Card.Content style={noPadding}>
-        <Card.Meta>
-          <Image className='profile-pic' floated='left'
-              /* eslint-disable-next-line max-len */
-                 src='https://media.discordapp.net/attachments/641715894984245258/646252553176219668/textXchange_Logo_4.png'/>
-          $ {props.book.cost}
-          <span style={right}> Posted {props.book.datePosted.toLocaleDateString()} </span>
-          <span style={right}> Owned by {props.book.owner} </span>
-        </Card.Meta>
-      </Card.Content>
-    </Card>
-);
-
-/** Require a document to be passed to this component. */
-MakeCard.propTypes = {
-  book: PropTypes.object.isRequired,
-};
 
 /** Renders a single row in the List Stuff table. See pages/ListStuff.jsx. */
 class Discover extends React.Component {
@@ -78,7 +40,7 @@ class Discover extends React.Component {
     // const found = _.filter(this.props.books, (book) => book.classUsed === this.state.classUsed[0]);
     return (
         <Container>
-          <Header as='h1' textAlign="center" inverted>Browse</Header>
+          <Header as='h1' textAlign="center">Browse</Header>
           <AutoForm schema={formSchema} onSubmit={data => this.submit(data)}>
             <Segment>
               <MultiSelectField name='classUsed' showInlineError={true} placeholder={'Choose your classes'}/>
@@ -88,7 +50,7 @@ class Discover extends React.Component {
           <Card.Group centered style={{ paddingTop: '10px' }}>
             {this.state.classUsed.map((classUsed) => {
               const found = _.filter(this.props.books, (book) => book.classUsed === classUsed);
-              return found.map((book, index) => <MakeCard book={book} key={index}/>);
+              return found.map((book, index) => <DiscoverBook book={book} key={index}/>);
             })}
           </Card.Group>
         </Container>

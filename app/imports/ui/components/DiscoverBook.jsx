@@ -1,27 +1,11 @@
 import React from 'react';
-import { Card, Image, Popup, Label } from 'semantic-ui-react';
-import { Books } from '/imports/api/book/Book';
+import { Card, Image, Label, Popup } from 'semantic-ui-react';
 import PropTypes from 'prop-types';
 import { withRouter } from 'react-router-dom';
 import Button from 'semantic-ui-react/dist/commonjs/elements/Button';
-import Confirm from 'semantic-ui-react/dist/commonjs/addons/Confirm';
 
 /** Renders a single row in the List Stuff table. See pages/ListStuff.jsx. */
-class ProfileBook extends React.Component {
-
-  delete(id) {
-    Books.remove(id);
-    this.setState({ open: false });
-  }
-
-  edit = (id) => this.props.history.push(`/edit/${id}`)
-
-  state = { open: false }
-
-  open = () => this.setState({ open: true })
-
-  close = () => this.setState({ open: false })
-
+class DiscoverBook extends React.Component {
   render() {
     const right = { float: 'right' };
     const noPadding = { paddingBottom: '7px' };
@@ -45,28 +29,13 @@ class ProfileBook extends React.Component {
           </Card.Content>
           <Card.Content style={noPadding}>
             <Card.Meta>
-              {/* eslint-disable-next-line max-len */}
               <Image className='profile-pic' floated='left'
                      /* eslint-disable-next-line max-len */
                      src='https://media.discordapp.net/attachments/641715894984245258/646252553176219668/textXchange_Logo_4.png'/>
               $ {this.props.book.cost}
               <span style={right}> Posted {this.props.book.datePosted.toLocaleDateString()} </span>
+              <span style={right}> Owned by {this.props.book.owner}</span>
             </Card.Meta>
-          </Card.Content>
-          <Card.Content extra>
-            <div className='ui two buttons'>
-              <Button basic color='red' onClick={this.open}>
-                Delete
-              </Button>
-              <Confirm
-                  open={this.state.open}
-                  onCancel={this.close}
-                  onConfirm={() => this.delete(this.props.book._id)}
-              />
-              <Button basic color='green' onClick={this.edit.bind(this, this.props.book._id)}>
-                Edit
-              </Button>
-            </div>
           </Card.Content>
         </Card>
     );
@@ -74,11 +43,9 @@ class ProfileBook extends React.Component {
 }
 
 /** Require a document to be passed to this component. */
-ProfileBook.propTypes = {
+DiscoverBook.propTypes = {
   book: PropTypes.object.isRequired,
-  Books: PropTypes.array.isRequired,
-  history: PropTypes.object,
 };
 
 /** Wrap this component in withRouter since we use the <Link> React Router element. */
-export default withRouter(ProfileBook);
+export default withRouter(DiscoverBook);
