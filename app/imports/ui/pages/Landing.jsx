@@ -19,18 +19,18 @@ class Landing extends React.Component {
           <Grid container centered stackable columns={3}>
             <Grid.Column textAlign='center'>
               <Segment inverted style={txGreen}>
-                <Header inverted as='h1'>Buy Textbooks</Header>
-                <Icon size='huge' name='shop'/>
-                <Header inverted as='h3'>Purchase used text books for the classes you need from other students,
-                  and below market price</Header>
+                <Header inverted as='h1'>Welcome!</Header>
+                <Icon size='huge' name='user circle outline'/>
+                <Header inverted as='h3'>University of Hawaii text book market exchange providing
+                  an affordable route to education</Header>
               </Segment>
             </Grid.Column>
             <Grid.Column textAlign='center'>
               <Segment inverted style={txGreen}>
-                <Header inverted as='h1'>Welcome!</Header>
-                <Icon size='huge' name='user circle outline'/>
-                <Header inverted as='h3'>University of Hawaii text book market exchange providing
-                an affordable route to education</Header>
+                <Header inverted as='h1'>Buy Textbooks</Header>
+                <Icon size='huge' name='shop'/>
+                <Header inverted as='h3'>Purchase used text books for the classes you need from other students,
+                  and below market price</Header>
               </Segment>
             </Grid.Column>
             <Grid.Column textAlign='center'>
