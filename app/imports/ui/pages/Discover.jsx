@@ -27,9 +27,6 @@ const MakeCard = (props) => (
         <Card.Header>{props.book.title}</Card.Header>
         <Card.Meta>{props.book.author}</Card.Meta>
         <Card.Description> {props.book.description} </Card.Description>
-        <Label tag>
-          {props.book.classUsed}
-        </Label>
       </Card.Content>
       <Card.Content style={noPadding}>
         <Card.Meta>
@@ -38,6 +35,9 @@ const MakeCard = (props) => (
                  src='https://media.discordapp.net/attachments/641715894984245258/646252553176219668/textXchange_Logo_4.png'/>
           $ {props.book.cost}
           <span style={right}> Posted {props.book.datePosted.toLocaleDateString()} </span>
+          <Label tag floated='left'>
+            {props.book.classUsed}
+          </Label>
         </Card.Meta>
       </Card.Content>
     </Card>
