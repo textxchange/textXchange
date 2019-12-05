@@ -48,8 +48,8 @@ class BuyBook extends React.Component {
   constructor(props) {
     super(props);
     this.state = { classUsed: [] };
-    this.select  = this.props.location;
-    console.log(this.select);
+    this.select  = this.props.location.select;
+    console.log(this.select.select);
   }
 
   submit(data) {
