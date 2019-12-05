@@ -73,7 +73,7 @@ class Discover extends React.Component {
   }
 
   renderPage() {
-    const allClasses = _.pluck(Books.find().fetch(), 'classUsed');
+    const allClasses = _.pluck(_.sortBy((Books.find().fetch()), 'classUsed'), 'classUsed');
     const formSchema = makeSchema(allClasses);
     // const found = _.filter(this.props.books, (book) => book.classUsed === this.state.classUsed[0]);
     return (
