@@ -15,7 +15,6 @@ import ProfileBook from '../components/ProfileBook';
 /** Create a schema to specify the structure of the data to appear in the form. */
 const right = { float: 'right' };
 const noPadding = { paddingBottom: '7px' };
-
 /** Component for layout out a Book Card. */
 const MakeCard = (props) => (
     <Card>
@@ -49,6 +48,8 @@ class BuyBook extends React.Component {
   constructor(props) {
     super(props);
     this.state = { classUsed: [] };
+    this.select  = this.props.location;
+    console.log(this.select);
   }
 
   submit(data) {
@@ -57,22 +58,34 @@ class BuyBook extends React.Component {
 
   /** If the subscription(s) have been received, render the page, otherwise show a loading icon. */
   render() {
+
     return (this.props.ready) ? this.renderPage() : <Loader active>Getting data</Loader>;
   }
 
   renderPage() {
-    // const found = _.filter(this.props.books, (book) => book.classUsed === this.state.classUsed[0]);
     return (
         <Container>
           <Header as='h1' textAlign="center" inverted>Buy Book</Header>
 
           <Card.Group centered style={{ paddingTop: '10px' }}>
-            {this.props.books.map((book, index) => <MakeCard
-                key={index}
-                book={book}
-                Books={Books}
-            />)}
-            })}
+            <Card>
+              <Image className='book-image' src={this.select.image}/>
+              <Card.Content>
+                <Card.Header>{this.select.title}</Card.Header>
+                <Card.Meta>{this.select.author}</Card.Meta>
+                <Card.Description> {this.select.description} </Card.Description>
+              </Card.Content>
+              <Card.Content style={noPadding}>
+                <Card.Meta>
+                  {/* eslint-disable-next-line max-len */}
+                  <Image className='profile-pic' floated='left'
+                      /* eslint-disable-next-line max-len */
+                         src='https://media.discordapp.net/attachments/641715894984245258/646252553176219668/textXchange_Logo_4.png'/>
+                  $ {this.select.cost}
+                  <span style={right}> Posted {this.select.datePosted.toLocaleDateString()} </span>
+                </Card.Meta>
+              </Card.Content>
+            </Card>
           </Card.Group>
         </Container>
     );

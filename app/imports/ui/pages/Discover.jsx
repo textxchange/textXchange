@@ -11,6 +11,7 @@ import { Books } from '../../api/book/Book';
 import MultiSelectField from '../forms/controllers/MultiSelectField';
 import Button from 'semantic-ui-react/dist/commonjs/elements/Button';
 import { NavLink } from 'react-router-dom';
+import ProfileBook from '../components/ProfileBook';
 
 /** Create a schema to specify the structure of the data to appear in the form. */
 const makeSchema = (allClasses) => new SimpleSchema({
@@ -20,7 +21,6 @@ const makeSchema = (allClasses) => new SimpleSchema({
 
 const right = { float: 'right' };
 const noPadding = { paddingBottom: '7px' };
-
 /** Component for layout out a Book Card. */
 const MakeCard = (props) => (
     <Card>
@@ -42,7 +42,7 @@ const MakeCard = (props) => (
       </Card.Content>
       <Card.Content extra>
         <div className='ui two buttons'>
-          <Button basic color='green' pointing="top right" text="Buy Book" as={NavLink} exact to="/buybook" >
+          <Button basic color='green' pointing="top right" text="Buy Book" as={NavLink} exact to={{ pathname: "/buybook", select: props.book }} >
             Buy Book
           </Button>
         </div>
