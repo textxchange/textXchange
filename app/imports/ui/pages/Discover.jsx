@@ -32,7 +32,7 @@ const MakeCard = (props) => (
               on='click'
               trigger={<Button content='View Description' />}
           />
-          <Label tag floated='left'>
+          <Label tag floated='right'>
             {props.book.classUsed}
           </Label>
         </Card.Description>
@@ -44,6 +44,7 @@ const MakeCard = (props) => (
                  src='https://media.discordapp.net/attachments/641715894984245258/646252553176219668/textXchange_Logo_4.png'/>
           $ {props.book.cost}
           <span style={right}> Posted {props.book.datePosted.toLocaleDateString()} </span>
+          <span style={right}> Owned by {props.book.owner} </span>
         </Card.Meta>
       </Card.Content>
     </Card>
