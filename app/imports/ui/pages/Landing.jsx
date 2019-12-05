@@ -38,7 +38,7 @@ class Landing extends React.Component {
                 <Header inverted as='h1'>Exchange Textbooks</Header>
                 <Icon size='huge' name='dollar sign'/>
                 <Header inverted as='h3'>Sell your own text books to other college students or
-                exchange text books for different classes from a vast batabase</Header>
+                exchange text books for different classes from a vast database</Header>
               </Segment>
             </Grid.Column>
           </Grid>
