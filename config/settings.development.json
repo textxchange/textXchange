@@ -6,13 +6,6 @@
     { "email": "jack@foo.com", "password": "changeme", "firstName": "Jack", "lastName": "Foo","studentId": "00000002","campus": "leeward" }
   ],
 
-  "defaultData": [
-    { "name": "Basket", "quantity": 3, "owner": "john@foo.com", "condition": "excellent" },
-    { "name": "Bicycle", "quantity": 2, "owner": "john@foo.com", "condition": "poor" },
-    { "name": "Banana", "quantity": 2, "owner": "admin@foo.com", "condition": "good" },
-    { "name": "Boogie Board", "quantity": 2, "owner": "admin@foo.com", "condition": "excellent" }
-  ],
-
   "defaultProfiles": [
     {"firstName": "John", "lastName":  "Foo", "studentId": "00000000", "campus":  "manoa", "owner": "admin@foo.com", "role":  "admin" },
     {"firstName": "John", "lastName":  "Foo", "studentId": "00000000", "campus":  "manoa", "owner": "john@foo.com" },
