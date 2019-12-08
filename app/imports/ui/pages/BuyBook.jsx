@@ -13,6 +13,7 @@ import Button from "semantic-ui-react/dist/commonjs/elements/Button";
 import ProfileBook from "../components/ProfileBook";
 import Icon from "semantic-ui-react/dist/commonjs/elements/Icon";
 import Modal from "semantic-ui-react/dist/commonjs/modules/Modal";
+import { Profiles } from "/imports/api/profile/Profile";
 
 /** Create a schema to specify the structure of the data to appear in the form. */
 const right = { float: "right" };
@@ -80,7 +81,18 @@ class BuyBook extends React.Component {
             </Card.Content>
             <Card.Content extra>
               <Modal
-                  trigger={<Button basic color='green' content='Contact Seller for Purchase'/>}
+                  trigger={<Button basic color='green' content='Contact Seller for Purchase' onClick={Meteor.call(
+                      "sendEmail",
+                      "textXchange.team@gmail.com",
+                      this.select.owner,
+                      "textXchange, Buyer Notification!",
+                      "Hello " + this.select.firstName + "," +
+                      this.props.profile[0].firstName + " " +
+                      this.props.profile[0].lastName +
+                      " would like to purchase your book: " +
+                      this.select.title + "please contact them via email at : " +
+                      this.select.owner + " to setup an exchange." + "    -textXchange"
+                  )}/>}
                   header='Exchange Initiated'
                   content='The seller will be notified of your intent to purchase and will contact you!'
                   actions={[{ key: "done", content: "Got it", positive: true }]}
@@ -96,7 +108,8 @@ class BuyBook extends React.Component {
 /** Require a document to be passed to this component. */
 BuyBook.propTypes = {
   books: PropTypes.array.isRequired,
-  ready: PropTypes.bool.isRequired
+  ready: PropTypes.bool.isRequired,
+  profile: PropTypes.array.isRequired
 };
 
 /** Wrap this component in withRouter since we use the <Link> React Router element. */
@@ -104,8 +117,10 @@ BuyBook.propTypes = {
 export default withTracker(() => {
   // Get access to Stuff documents.
   const subscription = Meteor.subscribe("BookPublic");
+  const profilesub = Meteor.subscribe("Profile");
   return {
+    profile: Profiles.find({}).fetch(),
     books: Books.find({}).fetch(),
-    ready: subscription.ready()
+    ready: subscription.ready() && profilesub.ready()
   };
 })(BuyBook);
