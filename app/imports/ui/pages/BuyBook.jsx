@@ -86,7 +86,7 @@ class BuyBook extends React.Component {
                       "textXchange.team@gmail.com",
                       this.select.owner,
                       "textXchange, Buyer Notification!",
-                      "Hello " + this.select.firstName + "," +
+                      "Hello " + this.select.owner + "," +
                       this.props.profile[0].firstName + " " +
                       this.props.profile[0].lastName +
                       " would like to purchase your book: " +
