@@ -1,7 +1,7 @@
 import React from "react";
 import { Meteor } from "meteor/meteor";
 import SimpleSchema from "simpl-schema";
-import { Card, Header, Container, Loader, Segment, Image } from "semantic-ui-react";
+import { Card, Header, Container, Loader, Segment, Image, Label } from "semantic-ui-react";
 import PropTypes from "prop-types";
 import { _ } from "meteor/underscore";
 import SubmitField from "uniforms-semantic/SubmitField";
@@ -64,6 +64,9 @@ class BuyBook extends React.Component {
               <Card.Header>{this.select.title}</Card.Header>
               <Card.Meta>{this.select.author}</Card.Meta>
               <Card.Description> {this.select.description} </Card.Description>
+              <Label tag floated='right'>
+                {this.select.classUsed}
+              </Label>
             </Card.Content>
             <Card.Content style={noPadding}>
               <Card.Meta>
@@ -82,6 +85,7 @@ class BuyBook extends React.Component {
                   content='The seller will be notified of your intent to purchase and will contact you!'
                   actions={[{ key: "done", content: "Got it", positive: true }]}
               />
+              <span style={right}> Owned by {this.select.owner}</span>
             </Card.Content>
           </Card>
         </Container>

@@ -1,7 +1,7 @@
 import React from 'react';
 import { Card, Image, Label, Popup } from 'semantic-ui-react';
 import PropTypes from 'prop-types';
-import { withRouter } from 'react-router-dom';
+import { NavLink, withRouter } from "react-router-dom";
 import Button from 'semantic-ui-react/dist/commonjs/elements/Button';
 
 /** Renders a single row in the List Stuff table. See pages/ListStuff.jsx. */
@@ -36,6 +36,14 @@ class DiscoverBook extends React.Component {
               <span style={right}> Posted {this.props.book.datePosted.toLocaleDateString()} </span>
               <span style={right}> Owned by {this.props.book.owner}</span>
             </Card.Meta>
+              <Card.Content extra>
+                  <div className='ui two buttons'>
+                      <Button basic color='green' pointing="top right" text="Buy Book" as={NavLink} exact
+                              to={{ pathname: "/buybook", select: this.props.book }}>
+                          Buy Book
+                      </Button>
+                  </div>
+              </Card.Content>
           </Card.Content>
         </Card>
     );
