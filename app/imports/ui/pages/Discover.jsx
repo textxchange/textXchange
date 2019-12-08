@@ -10,6 +10,8 @@ import { withTracker } from 'meteor/react-meteor-data';
 import { Books } from '../../api/book/Book';
 import MultiSelectField from '../forms/controllers/MultiSelectField';
 import DiscoverBook from '../components/DiscoverBook';
+import Button from "semantic-ui-react/dist/commonjs/elements/Button";
+import { NavLink } from "react-router-dom";
 
 /** Create a schema to specify the structure of the data to appear in the form. */
 const makeSchema = (allClasses) => new SimpleSchema({
@@ -17,6 +19,42 @@ const makeSchema = (allClasses) => new SimpleSchema({
   'classUsed.$': { type: String, allowedValues: allClasses },
 });
 
+const right = { float: "right" };
+const noPadding = { paddingBottom: "7px" };
+/** Component for layout out a Book Card. */
+const MakeCard = (props) => (
+    <Card>
+        <Image className='book-image' src={props.book.image}/>
+        <Card.Content>
+            <Card.Header>{props.book.title}</Card.Header>
+            <Card.Meta>{props.book.author}</Card.Meta>
+            <Card.Description> {props.book.description} </Card.Description>
+        </Card.Content>
+        <Card.Content style={noPadding}>
+            <Card.Meta>
+                {/* eslint-disable-next-line max-len */}
+                <Image className='profile-pic' floated='left'
+                    /* eslint-disable-next-line max-len */
+                       src='https://media.discordapp.net/attachments/641715894984245258/646252553176219668/textXchange_Logo_4.png'/>
+                $ {props.book.cost}
+                <span style={right}> Posted {props.book.datePosted.toLocaleDateString()} </span>
+            </Card.Meta>
+        </Card.Content>
+        <Card.Content extra>
+            <div className='ui two buttons'>
+                <Button basic color='green' pointing="top right" text="Buy Book" as={NavLink} exact
+                        to={{ pathname: "/buybook", select: props.book }}>
+                    Buy Book
+                </Button>
+            </div>
+        </Card.Content>
+    </Card>
+);
+
+/** Require a document to be passed to this component. */
+MakeCard.propTypes = {
+    book: PropTypes.object.isRequired
+};
 /** Renders a single row in the List Stuff table. See pages/ListStuff.jsx. */
 class Discover extends React.Component {
 
