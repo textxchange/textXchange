@@ -1,7 +1,7 @@
 import React from 'react';
 import { Meteor } from 'meteor/meteor';
 import SimpleSchema from 'simpl-schema';
-import { Card, Header, Container, Loader, Segment, Image, Label, Popup, Button } from 'semantic-ui-react';
+import { Card, Header, Container, Loader, Segment } from 'semantic-ui-react';
 import PropTypes from 'prop-types';
 import { _ } from 'meteor/underscore';
 import SubmitField from 'uniforms-semantic/SubmitField';
