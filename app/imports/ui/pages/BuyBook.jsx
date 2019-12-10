@@ -1,23 +1,23 @@
-import React from "react";
-import { Meteor } from "meteor/meteor";
-import SimpleSchema from "simpl-schema";
-import { Card, Header, Container, Loader, Segment, Image, Label } from "semantic-ui-react";
-import PropTypes from "prop-types";
-import { _ } from "meteor/underscore";
-import SubmitField from "uniforms-semantic/SubmitField";
-import AutoForm from "uniforms-semantic/AutoForm";
-import { withTracker } from "meteor/react-meteor-data";
-import { Books } from "../../api/book/Book";
-import MultiSelectField from "../forms/controllers/MultiSelectField";
-import Button from "semantic-ui-react/dist/commonjs/elements/Button";
-import ProfileBook from "../components/ProfileBook";
-import Icon from "semantic-ui-react/dist/commonjs/elements/Icon";
-import Modal from "semantic-ui-react/dist/commonjs/modules/Modal";
-import { Profiles } from "/imports/api/profile/Profile";
+import React from 'react';
+import { Meteor } from 'meteor/meteor';
+import SimpleSchema from 'simpl-schema';
+import { Card, Header, Container, Loader, Segment, Image, Label } from 'semantic-ui-react';
+import PropTypes from 'prop-types';
+import { _ } from 'meteor/underscore';
+import SubmitField from 'uniforms-semantic/SubmitField';
+import AutoForm from 'uniforms-semantic/AutoForm';
+import { withTracker } from 'meteor/react-meteor-data';
+import { Books } from '../../api/book/Book';
+import MultiSelectField from '../forms/controllers/MultiSelectField';
+import Button from 'semantic-ui-react/dist/commonjs/elements/Button';
+import ProfileBook from '../components/ProfileBook';
+import Icon from 'semantic-ui-react/dist/commonjs/elements/Icon';
+import Modal from 'semantic-ui-react/dist/commonjs/modules/Modal';
+import { Profiles } from '/imports/api/profile/Profile';
 
 /** Create a schema to specify the structure of the data to appear in the form. */
-const right = { float: "right" };
-const noPadding = { paddingBottom: "7px" };
+const right = { float: 'right' };
+const noPadding = { paddingBottom: '7px' };
 
 Meteor.methods({
   sendEmail(to, from, subject, text) {
@@ -29,7 +29,7 @@ Meteor.methods({
     this.unblock();
 
     Email.send({ to, from, subject, text });
-  }
+  },
 });
 
 
@@ -40,9 +40,9 @@ class BuyBook extends React.Component {
     super(props);
     console.log(this.props.location.select);
     if (this.props.location.select != undefined) {
-      localStorage.setItem("SelectedOption", JSON.stringify(this.props.location.select));
+      localStorage.setItem('SelectedOption', JSON.stringify(this.props.location.select));
     }
-    this.select = JSON.parse(localStorage.getItem("SelectedOption") || 1);
+    this.select = JSON.parse(localStorage.getItem('SelectedOption') || 1);
     this.select.datePosted = new Date(this.select.datePosted);
     console.log(this.select);
   }
@@ -82,20 +82,20 @@ class BuyBook extends React.Component {
             <Card.Content extra>
               <Modal
                   trigger={<Button basic color='green' content='Contact Seller for Purchase' onClick={Meteor.call(
-                      "sendEmail",
-                      "textXchange.team@gmail.com",
+                      'sendEmail',
+                      'textXchange.team@gmail.com',
                       this.select.owner,
-                      "textXchange, Buyer Notification!",
-                      "Hello " + this.select.owner + "," +
-                      this.props.profile[0].firstName + " " +
-                      this.props.profile[0].lastName +
-                      " would like to purchase your book: " +
-                      this.select.title + "please contact them via email at : " +
-                      this.select.owner + " to setup an exchange." + "    -textXchange"
+                      'textXchange, Buyer Notification!',
+                      `Hello ${this.select.owner},${
+                      this.props.profile[0].firstName} ${
+                      this.props.profile[0].lastName
+                      } would like to purchase your book: ${
+                      this.select.title}please contact them via email at : ${
+                      this.select.owner} to setup an exchange.     -textXchange`,
                   )}/>}
                   header='Exchange Initiated'
                   content='The seller will be notified of your intent to purchase and will contact you!'
-                  actions={[{ key: "done", content: "Got it", positive: true }]}
+                  actions={[{ key: 'done', content: 'Got it', positive: true }]}
               />
               <span style={right}> Owned by {this.select.owner}</span>
             </Card.Content>
@@ -109,18 +109,18 @@ class BuyBook extends React.Component {
 BuyBook.propTypes = {
   books: PropTypes.array.isRequired,
   ready: PropTypes.bool.isRequired,
-  profile: PropTypes.array.isRequired
+  profile: PropTypes.array.isRequired,
 };
 
 /** Wrap this component in withRouter since we use the <Link> React Router element. */
 /** withTracker connects Meteor data to React components. https://guide.meteor.com/react.html#using-withTracker */
 export default withTracker(() => {
   // Get access to Stuff documents.
-  const subscription = Meteor.subscribe("BookPublic");
-  const profilesub = Meteor.subscribe("Profile");
+  const subscription = Meteor.subscribe('BookPublic');
+  const profilesub = Meteor.subscribe('Profile');
   return {
     profile: Profiles.find({}).fetch(),
     books: Books.find({}).fetch(),
-    ready: subscription.ready() && profilesub.ready()
+    ready: subscription.ready() && profilesub.ready(),
   };
 })(BuyBook);
