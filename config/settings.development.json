@@ -1,16 +1,16 @@
 {
   "defaultAccounts": [
-    { "email": "admin@foo.com", "password": "changeme", "firstName": "John", "lastName": "Foo","studentId": "00000000","campus": "manoa", "role": "admin" },
-    { "email": "john@foo.com", "password": "changeme", "firstName": "John", "lastName": "Foo","studentId": "00000000","campus": "manoa" },
-    { "email": "jane@foo.com", "password": "changeme", "firstName": "Jane", "lastName": "Foo","studentId": "00000001","campus": "manoa" },
-    { "email": "jack@foo.com", "password": "changeme", "firstName": "Jack", "lastName": "Foo","studentId": "00000002","campus": "leeward" }
+    { "email": "admin@foo.com", "password": "changeme", "firstName": "John", "lastName": "Foo", "campus": "manoa", "role": "admin" },
+    { "email": "john@foo.com", "password": "changeme", "firstName": "John", "lastName": "Foo", "campus": "manoa" },
+    { "email": "jane@foo.com", "password": "changeme", "firstName": "Jane", "lastName": "Foo", "campus": "manoa" },
+    { "email": "jack@foo.com", "password": "changeme", "firstName": "Jack", "lastName": "Foo" ,"campus": "leeward" }
   ],
 
   "defaultProfiles": [
-    {"firstName": "John", "lastName":  "Foo", "studentId": "00000000", "campus":  "manoa", "owner": "admin@foo.com", "role":  "admin" },
-    {"firstName": "John", "lastName":  "Foo", "studentId": "00000000", "campus":  "manoa", "owner": "john@foo.com" },
-    {"firstName": "Jane", "lastName":  "Foo", "studentId": "00000001", "campus":  "manoa", "owner": "jane@foo.com" },
-    {"firstName": "Jack", "lastName":  "Foo", "studentId": "00000002", "campus":  "leeward", "owner": "jack@foo.com" }
+    {"firstName": "John", "lastName":  "Foo", "campus":  "manoa", "owner": "admin@foo.com", "role":  "admin" },
+    {"firstName": "John", "lastName":  "Foo", "campus":  "manoa", "owner": "john@foo.com" },
+    {"firstName": "Jane", "lastName":  "Foo", "campus":  "manoa", "owner": "jane@foo.com" },
+    {"firstName": "Jack", "lastName":  "Foo", "campus":  "leeward", "owner": "jack@foo.com" }
 
   ],
 

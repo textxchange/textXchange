@@ -100,6 +100,7 @@ class Signup extends React.Component {
                       label="Email"
                       icon="user"
                       iconPosition="left"
+                      required
                       name="email"
                       type="email"
                       placeholder="E-mail address"
@@ -109,6 +110,7 @@ class Signup extends React.Component {
                       label="Password"
                       icon="lock"
                       iconPosition="left"
+                      required
                       name="password"
                       placeholder="Password"
                       type="password"
@@ -119,6 +121,7 @@ class Signup extends React.Component {
                       icon="lock"
                       iconPosition="left"
                       name="repassword"
+                      required
                       placeholder="repassword"
                       type="password"
                       onChange={this.handleChange}
@@ -129,15 +132,16 @@ class Signup extends React.Component {
                   </Header>
                   <Form.Group widths={'equal'}>
                     <Form.Input fluid label='First name' placeholder='First name' name="firstName" type="firstName"
-                                onChange={this.handleChange}/>
+                                onChange={this.handleChange} required/>
                     <Form.Input fluid label='Last name' placeholder='Last name' name="lastName" type="lastName"
-                                onChange={this.handleChange}/>
+                                onChange={this.handleChange} required/>
                   </Form.Group>
                   <Form.Group widths={'equal'}>
                     <Form.Select
                         fluid
                         label='Campus'
                         options={options}
+                        required
                         placeholder='Campus'
                         name="campus"
                         type="campus"
