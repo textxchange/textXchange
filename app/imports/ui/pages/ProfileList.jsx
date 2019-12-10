@@ -11,7 +11,6 @@ import { Books } from '../../api/book/Book';
 import ProfileBook from '../components/ProfileBook';
 
 
-/** Renders a table containing all of the Stuff documents. Use <StuffItem> to render each row. */
 class ProfileList extends React.Component {
   /** If the subscription(s) have been received, render the page, otherwise show a loading icon. */
   render() {
@@ -91,7 +90,7 @@ class ProfileList extends React.Component {
   }
 }
 
-/** Require an array of Stuff documents in the props. */
+/** Require an array of Book & Profile documents in the props. */
 ProfileList.propTypes = {
   profile: PropTypes.array.isRequired,
   books: PropTypes.array.isRequired,
@@ -100,7 +99,7 @@ ProfileList.propTypes = {
 
 /** withTracker connects Meteor data to React components. https://guide.meteor.com/react.html#using-withTracker */
 export default withTracker(() => {
-  // Get access to Stuff documents.
+  // Get access to Book documents.
   const subscription = Meteor.subscribe('Profile');
   const bookSub = Meteor.subscribe('Book');
   return {

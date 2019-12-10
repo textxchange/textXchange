@@ -1,10 +1,10 @@
 import React from 'react';
 import { Card, Image, Label, Popup } from 'semantic-ui-react';
 import PropTypes from 'prop-types';
-import { NavLink, withRouter } from "react-router-dom";
+import { NavLink, withRouter } from 'react-router-dom';
 import Button from 'semantic-ui-react/dist/commonjs/elements/Button';
 
-/** Renders a single row in the List Stuff table. See pages/ListStuff.jsx. */
+/** Renders a Book in Discover. See pages/Discover.jsx. */
 class DiscoverBook extends React.Component {
   render() {
     const right = { float: 'right' };
@@ -39,7 +39,7 @@ class DiscoverBook extends React.Component {
               <Card.Content extra>
                   <div className='ui two buttons'>
                       <Button basic color='green' pointing="top right" text="Buy Book" as={NavLink} exact
-                              to={{ pathname: "/buybook", select: this.props.book }}>
+                              to={{ pathname: '/buybook', select: this.props.book }}>
                           Buy Book
                       </Button>
                   </div>

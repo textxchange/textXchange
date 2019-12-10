@@ -6,7 +6,7 @@ import { withRouter } from 'react-router-dom';
 import Button from 'semantic-ui-react/dist/commonjs/elements/Button';
 import Confirm from 'semantic-ui-react/dist/commonjs/addons/Confirm';
 
-/** Renders a single row in the List Stuff table. See pages/ListStuff.jsx. */
+/** Renders a Book in Profile. See pages/ProfileList.jsx. */
 class ProfileBook extends React.Component {
 
   componentWillMount() {

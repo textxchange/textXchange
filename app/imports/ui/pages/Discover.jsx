@@ -1,7 +1,7 @@
 import React from 'react';
 import { Meteor } from 'meteor/meteor';
 import SimpleSchema from 'simpl-schema';
-import { Card, Header, Container, Loader, Segment, Image, Label, Popup, Button } from 'semantic-ui-react';
+import { Card, Header, Container, Loader, Segment } from 'semantic-ui-react';
 import PropTypes from 'prop-types';
 import { _ } from 'meteor/underscore';
 import SubmitField from 'uniforms-semantic/SubmitField';
@@ -10,7 +10,6 @@ import { withTracker } from 'meteor/react-meteor-data';
 import { Books } from '../../api/book/Book';
 import MultiSelectField from '../forms/controllers/MultiSelectField';
 import DiscoverBook from '../components/DiscoverBook';
-import { NavLink } from "react-router-dom";
 
 /** Create a schema to specify the structure of the data to appear in the form. */
 const makeSchema = (allClasses) => new SimpleSchema({
@@ -67,7 +66,7 @@ Discover.propTypes = {
 /** Wrap this component in withRouter since we use the <Link> React Router element. */
 /** withTracker connects Meteor data to React components. https://guide.meteor.com/react.html#using-withTracker */
 export default withTracker(() => {
-  // Get access to Stuff documents.
+  // Get access to Book documents.
   const subscription = Meteor.subscribe('BookPublic');
   return {
     books: Books.find({}).fetch(),
