@@ -1,18 +1,12 @@
 import React from 'react';
 import { Meteor } from 'meteor/meteor';
-import SimpleSchema from 'simpl-schema';
-import { Card, Header, Container, Loader, Segment, Image, Label } from 'semantic-ui-react';
+import { Card, Header, Container, Loader, Image, Label } from 'semantic-ui-react';
 import PropTypes from 'prop-types';
 import { _ } from 'meteor/underscore';
-import SubmitField from 'uniforms-semantic/SubmitField';
-import AutoForm from 'uniforms-semantic/AutoForm';
 import { withTracker } from 'meteor/react-meteor-data';
 import Button from 'semantic-ui-react/dist/commonjs/elements/Button';
-import Icon from 'semantic-ui-react/dist/commonjs/elements/Icon';
 import Modal from 'semantic-ui-react/dist/commonjs/modules/Modal';
 import { Books } from '../../api/book/Book';
-import MultiSelectField from '../forms/controllers/MultiSelectField';
-import ProfileBook from '../components/ProfileBook';
 
 /** Create a schema to specify the structure of the data to appear in the form. */
 const right = { float: 'right' };

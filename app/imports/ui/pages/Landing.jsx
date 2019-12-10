@@ -19,23 +19,23 @@ class Landing extends React.Component {
             </Grid>
             <br/><br/><br/>
           </div>
-          {/*<Segment inverted style={txGreen}>*/}
-          {/*  <Grid container centered stackable columns={3}>*/}
-          {/*    <Grid.Column textAlign='center' style={{ marginRight: '14em' }}>*/}
-          {/*      <Header inverted as='h1'>Buy Textbooks</Header>*/}
-          {/*      <Icon size='huge' name='shop'/>*/}
-          {/*      <Header inverted as='h3'>Purchase used text books for the classes you need from other students,*/}
-          {/*        and below market price</Header>*/}
-          {/*    </Grid.Column>*/}
-          {/*    <Grid.Column textAlign='center'>*/}
-          {/*      <Header inverted as='h1'>Sell Textbooks</Header>*/}
-          {/*      <Icon size='huge' name='dollar sign'/>*/}
-          {/*      <Header inverted as='h3'>Sell your own text books to other college students or*/}
-          {/*        exchange text books for different classes from a vast database</Header>*/}
-          {/*    </Grid.Column>*/}
-          {/*  </Grid>*/}
-          {/*  <Divider inverted vertical>AND</Divider>*/}
-          {/*</Segment>*/}
+           {/* <Segment inverted style={txGreen}> */}
+           {/* <Grid container centered stackable columns={3}> */}
+           {/*   <Grid.Column textAlign='center' style={{ marginRight: '14em' }}> */}
+           {/*     <Header inverted as='h1'>Buy Textbooks</Header> */}
+           {/*     <Icon size='huge' name='shop'/> */}
+           {/*     <Header inverted as='h3'>Purchase used text books for the classes you need from other students, */}
+           {/*       and below market price</Header> */}
+           {/*   </Grid.Column> */}
+           {/*   <Grid.Column textAlign='center'> */}
+           {/*     <Header inverted as='h1'>Sell Textbooks</Header> */}
+           {/*     <Icon size='huge' name='dollar sign'/> */}
+           {/*     <Header inverted as='h3'>Sell your own text books to other college students or */}
+           {/*       exchange text books for different classes from a vast database</Header> */}
+           {/*   </Grid.Column> */}
+           {/* </Grid> */}
+           {/* <Divider inverted vertical>AND</Divider> */}
+           {/* </Segment> */}
         </div>
     );
   }
