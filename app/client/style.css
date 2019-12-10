@@ -63,13 +63,18 @@ h1 {
 }
 
 .footer {
-  position: fixed;
+  position: relative;
   left: 0;
   bottom: 0;
   width: 100%;
   line-height: 150%;
+  padding-top: 10px;
 }
 
 .searchBar {
   padding: 24px 40px 5px 40px;
+}
+
+.browse {
+  padding-bottom: 50px;
 }
