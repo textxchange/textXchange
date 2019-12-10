@@ -6,15 +6,19 @@ import PropTypes from 'prop-types';
 import { _ } from 'meteor/underscore';
 import SubmitField from 'uniforms-semantic/SubmitField';
 import AutoForm from 'uniforms-semantic/AutoForm';
+import RadioField from 'uniforms-semantic/RadioField';
 import { withTracker } from 'meteor/react-meteor-data';
 import { Books } from '../../api/book/Book';
 import MultiSelectField from '../forms/controllers/MultiSelectField';
 import DiscoverBook from '../components/DiscoverBook';
 
+const options = ['title', 'author', 'classes'];
+
 /** Create a schema to specify the structure of the data to appear in the form. */
 const makeSchema = (allClasses) => new SimpleSchema({
   classUsed: { type: Array, label: 'Classes', optional: true },
   'classUsed.$': { type: String, allowedValues: allClasses },
+  param: { type: String, label: 'Filter By:', allowedValues: options },
 });
 
 class Discover extends React.Component {
@@ -34,6 +38,7 @@ class Discover extends React.Component {
   }
 
   renderPage() {
+    // eslint-disable-next-line react/prop-types
     const allClasses = _.pluck(_.sortBy((Books.find().fetch()), 'classUsed'), 'classUsed');
     const formSchema = makeSchema(allClasses);
     // const found = _.filter(this.props.books, (book) => book.classUsed === this.state.classUsed[0]);
@@ -43,7 +48,8 @@ class Discover extends React.Component {
           <AutoForm schema={formSchema} onSubmit={data => this.submit(data)}>
             <Segment>
               <MultiSelectField name='classUsed' showInlineError={true} placeholder={'Choose your classes'}/>
-              <SubmitField value='Submit'/>
+              <RadioField inline name='param' />
+              <SubmitField value='Search'/>
             </Segment>
           </AutoForm>
           <Card.Group centered style={{ paddingTop: '10px' }}>
