@@ -9,6 +9,18 @@ import Confirm from 'semantic-ui-react/dist/commonjs/addons/Confirm';
 /** Renders a single row in the List Stuff table. See pages/ListStuff.jsx. */
 class ProfileBook extends React.Component {
 
+  componentWillMount() {
+    // eslint-disable-next-line no-undef
+    fetch(`https://www.googleapis.com/books/v1/volumes?q=isbn:${this.props.book.ISBN}`, {
+      method: 'GET',
+    })
+        .then(response => response.json())
+        .then((json) => {
+          this.props.book.image = json.items[0].volumeInfo.imageLinks.thumbnail;
+          return console.log(json.items[0].volumeInfo.imageLinks.thumbnail);
+        });
+  }
+
   delete(id) {
     Books.remove(id);
     this.setState({ open: false });
