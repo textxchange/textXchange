@@ -1,3 +1,13 @@
+body {
+  font-size: 18px !important;
+  line-height: 1.375em;
+}
+
+h1 {
+  font-size: 3em;
+  line-height: 1.05em;
+}
+
 .books-background {
   background: url("/images/tx-cover-2.jpg") no-repeat center center fixed;
   background-size: cover;
@@ -50,4 +60,16 @@
 
 .profile-list {
   color: white;
+}
+
+.footer {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  line-height: 150%;
+}
+
+.searchBar {
+  padding: 24px 40px 5px 40px;
 }
