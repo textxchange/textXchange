@@ -57,7 +57,7 @@ class AddBook extends React.Component {
     return (
         <Grid container centered>
           <Grid.Column>
-            <Header as="h2" textAlign="center" style={{ color: 'White' }}>Sell a Book</Header>
+            <Header as="h2" textAlign="center" >Sell a Book</Header>
             <AutoForm ref={ref => {
               fRef = ref;
             }} schema={formSchema} onSubmit={data => this.submit(data, fRef)}>

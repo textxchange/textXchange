@@ -23,7 +23,6 @@ class ProfileList extends React.Component {
     return (
         <div className="beauty">
           <Container>
-            <Header as="h2" textAlign="center" className="less-margin" inverted>Profile</Header>
             <Container className="profile-container">
               <Grid>
                   <Grid.Row className="profile-top-row">

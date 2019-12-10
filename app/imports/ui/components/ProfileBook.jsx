@@ -1,5 +1,5 @@
 import React from 'react';
-import { Card, Image } from 'semantic-ui-react';
+import { Card, Image, Popup, Label } from 'semantic-ui-react';
 import { Books } from '/imports/api/book/Book';
 import PropTypes from 'prop-types';
 import { withRouter } from 'react-router-dom';
@@ -44,7 +44,16 @@ class ProfileBook extends React.Component {
           <Card.Content>
             <Card.Header>{this.props.book.title}</Card.Header>
             <Card.Meta>{this.props.book.author}</Card.Meta>
-            <Card.Description> {this.props.book.description} </Card.Description>
+            <Card.Description>
+              <Popup
+                  content={this.props.book.description}
+                  on='click'
+                  trigger={<Button content='View Description' />}
+              />
+              <Label tag floated='right'>
+                {this.props.book.classUsed}
+              </Label>
+            </Card.Description>
           </Card.Content>
           <Card.Content style={noPadding}>
             <Card.Meta>

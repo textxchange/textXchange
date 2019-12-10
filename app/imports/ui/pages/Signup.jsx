@@ -80,16 +80,15 @@ class Signup extends React.Component {
       { key: 'wo', text: 'West Oʻahu', value: 'westoahu' },
     ];
 
-    const { from } = this.props.location.state || { from: { pathname: '/add' } };
     // if correct authentication, redirect to from: page instead of signup screen
     if (this.state.redirectToReferer) {
-      return <Redirect to={from}/>;
+      return <Redirect to={'/profile'}/>;
     }
     return (
         <Container>
           <Grid textAlign="center" verticalAlign="middle" centered columns={2}>
             <Grid.Column>
-              <Header as="h2" textAlign="center" style={{ color: 'White' }}>
+              <Header as="h2" textAlign="center" >
                 Register your account
               </Header>
               <Form onSubmit={this.handleSubmit} inverted>
