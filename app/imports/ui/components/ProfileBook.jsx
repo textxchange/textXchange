@@ -1,13 +1,25 @@
 import React from 'react';
-import { Card, Image } from 'semantic-ui-react';
+import { Card, Image, Popup, Label } from 'semantic-ui-react';
 import { Books } from '/imports/api/book/Book';
 import PropTypes from 'prop-types';
 import { withRouter } from 'react-router-dom';
 import Button from 'semantic-ui-react/dist/commonjs/elements/Button';
 import Confirm from 'semantic-ui-react/dist/commonjs/addons/Confirm';
 
-/** Renders a single row in the List Stuff table. See pages/ListStuff.jsx. */
+/** Renders a Book in Profile. See pages/ProfileList.jsx. */
 class ProfileBook extends React.Component {
+
+  componentWillMount() {
+    // eslint-disable-next-line no-undef
+    fetch(`https://www.googleapis.com/books/v1/volumes?q=isbn:${this.props.book.ISBN}`, {
+      method: 'GET',
+    })
+        .then(response => response.json())
+        .then((json) => {
+          this.props.book.image = json.items[0].volumeInfo.imageLinks.thumbnail;
+          return console.log(json.items[0].volumeInfo.imageLinks.thumbnail);
+        });
+  }
 
   delete(id) {
     Books.remove(id);
@@ -32,7 +44,16 @@ class ProfileBook extends React.Component {
           <Card.Content>
             <Card.Header>{this.props.book.title}</Card.Header>
             <Card.Meta>{this.props.book.author}</Card.Meta>
-            <Card.Description> {this.props.book.description} </Card.Description>
+            <Card.Description>
+              <Popup
+                  content={this.props.book.description}
+                  on='click'
+                  trigger={<Button content='View Description' />}
+              />
+              <Label tag floated='right'>
+                {this.props.book.classUsed}
+              </Label>
+            </Card.Description>
           </Card.Content>
           <Card.Content style={noPadding}>
             <Card.Meta>

@@ -9,13 +9,13 @@ import Footer from '../components/Footer';
 import Landing from '../pages/Landing';
 import Discover from '../pages/Discover';
 import ProfileList from '../pages/ProfileList';
-import ListStuffAdmin from '../pages/ListStuffAdmin';
 import AddBook from '../pages/AddBook';
 import EditBook from '../pages/EditBook';
 import NotFound from '../pages/NotFound';
 import Signin from '../pages/Signin';
 import Signup from '../pages/Signup';
 import Signout from '../pages/Signout';
+import BuyBook from '../pages/BuyBook';
 
 /** Top-level layout component for this application. Called in imports/startup/client/startup.jsx. */
 class App extends React.Component {
@@ -29,9 +29,9 @@ class App extends React.Component {
               <Route path="/signin" component={Signin}/>
               <Route path="/discover" component={Discover}/>
               <Route path="/signup" component={Signup}/>
+              <Route path="/buybook" component={BuyBook}/>
               <ProtectedRoute path="/add" component={AddBook}/>
               <ProtectedRoute path="/edit/:_id" component={EditBook}/>
-              <AdminProtectedRoute path="/admin" component={ListStuffAdmin}/>
               <ProtectedRoute path="/profile" component={ProfileList}/>
               <ProtectedRoute path="/signout" component={Signout}/>
               <Route component={NotFound}/>
