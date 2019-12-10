@@ -1,9 +1,10 @@
 import React from 'react';
 import { Meteor } from 'meteor/meteor';
-import { Card, Loader, Input, Popup } from 'semantic-ui-react';
+import { Loader, Input, Select, Button, Icon } from 'semantic-ui-react';
 import Book from '/imports/ui/components/Book';
 import SubmitField from 'uniforms-semantic/SubmitField';
 import { withTracker } from 'meteor/react-meteor-data';
+import { Redirect } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { Books } from '../../api/book/Book';
 import DiscoverBook from './DiscoverBook';
@@ -16,7 +17,7 @@ class SearchBook extends React.Component {
 
   constructor(props) {
     super(props);
-    this.state = { query: '' };
+    this.state = { param: 'title', refer: false, search: '' };
   }
 
   submit(data) {
@@ -35,9 +36,13 @@ class SearchBook extends React.Component {
   }
 
   handleInputChange = (e) => {
-    this.setState({
-      query: e.target.value,
-    });
+    if (e.key === 'Enter') {
+      this.setState({ refer: true, search: e.target.value });
+    }
+  }
+
+  handleSelectChange = (e) => {
+    this.setState({ param: e.target.value });
   }
 
   searchItems = (book) => {
@@ -54,33 +59,30 @@ class SearchBook extends React.Component {
   }
 
   renderPage() {
-    return (
-        <div>
-          <Popup
-            trigger={
-              <Input
-                  icon='search'
-                  type='text'
-                  placeholder='Enter Book Title or Class'
-                  value={this.state.query}
-                  onChange={this.handleInputChange}
-                  onSubmit={this.handleFormSubmit}
-                  //action={<SubmitField value='Submit'/>}
-                  />
-            }
-            on='click'
-            flowing
-            content={
-              <Card.Group itemsPerRow={4}>
-                {this.props.books.filter(this.searchItems).map((book, index) => <DiscoverBook key={index}
-                                                                                      book={book} />)}
-              </Card.Group>
-            }
-          />
-        </div>
-    );
+    const options = [
+      { key: 'title', text: 'Title', value: 'title' },
+      { key: 'class', text: 'Class', value: 'class' },
+      { key: 'author', text: 'Author', value: 'author' },
+    ];
+
+    if (this.state.refer === true) {
+      return <Redirect to={{ pathname: '/discover', state: { search: this.state.search, param: this.state.param } }} />;
+    }
+      return (
+          <Input
+              icon
+              iconPosition='left'
+              placeholder='Search for a book now!'
+          >
+            <i className='search icon'/>
+            <input onKeyDown={this.handleInputChange}/>
+            <Select compact options={options} defaultValue='title' onChange={this.handleSelectChange}/>
+          </Input>
+      );
+
   }
 }
+
 SearchBook.propTypes = {
   books: PropTypes.array.isRequired,
   ready: PropTypes.bool.isRequired,
