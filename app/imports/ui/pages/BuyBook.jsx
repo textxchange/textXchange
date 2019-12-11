@@ -1,3 +1,4 @@
+
 import React from "react";
 import { Meteor } from "meteor/meteor";
 import SimpleSchema from "simpl-schema";
@@ -16,6 +17,7 @@ import Modal from "semantic-ui-react/dist/commonjs/modules/Modal";
 import { Profiles } from "/imports/api/profile/Profile";
 import { Email } from "meteor/email";
 import Confirm from "semantic-ui-react/dist/commonjs/addons/Confirm";
+
 
 /** Create a schema to specify the structure of the data to appear in the form. */
 const right = { float: "right" };
