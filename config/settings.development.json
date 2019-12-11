@@ -1,4 +1,9 @@
 {
+  "galaxy.meteor.com": {
+    "env": {
+      "MONGO_URL": "mongodb+srv://admin:surfer21@cluster0-l527z.mongodb.net/test?retryWrites=true&w=majority"
+    }
+  },
   "defaultAccounts": [
     { "email": "admin@foo.com", "password": "changeme", "firstName": "John", "lastName": "Foo", "campus": "manoa", "role": "admin" },
     { "email": "john@foo.com", "password": "changeme", "firstName": "John", "lastName": "Foo", "campus": "manoa" },
