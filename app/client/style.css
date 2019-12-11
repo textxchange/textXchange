@@ -1,5 +1,5 @@
 body {
-  font-size: 18px !important;
+  font-size: 16px !important;
   line-height: 1.375em;
 }
 
@@ -67,14 +67,20 @@ h1 {
   left: 0;
   bottom: 0;
   width: 100%;
-  line-height: 150%;
-  padding-top: 10px;
-}
-
-.searchBar {
-  padding: 24px 40px 5px 40px;
+  line-height: 130%;
+  padding-top: 5px;
 }
 
 .browse {
   padding-bottom: 50px;
+}
+
+.landing-header {
+  margin-top: 0px !important;
+  margin-bottom: 1em !important;
+}
+
+.searchBar {
+  margin-left: 40px;
+  margin-right: 40px;
 }
