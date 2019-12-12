@@ -1,24 +1,62 @@
 {
-  "galaxy.meteor.com": {
-    "env": {
-      "MONGO_URL": "mongodb+srv://admin:surfer21@cluster0-l527z.mongodb.net/test?retryWrites=true&w=majority"
-    }
-  },
   "defaultAccounts": [
-    { "email": "admin@foo.com", "password": "changeme", "firstName": "John", "lastName": "Foo", "campus": "manoa", "role": "admin" },
-    { "email": "john@foo.com", "password": "changeme", "firstName": "John", "lastName": "Foo", "campus": "manoa" },
-    { "email": "jane@foo.com", "password": "changeme", "firstName": "Jane", "lastName": "Foo", "campus": "manoa" },
-    { "email": "jack@foo.com", "password": "changeme", "firstName": "Jack", "lastName": "Foo" ,"campus": "leeward" }
+    {
+      "email": "admin@foo.com",
+      "password": "changeme",
+      "firstName": "John",
+      "lastName": "Foo",
+      "campus": "manoa",
+      "role": "admin"
+    },
+    {
+      "email": "john@foo.com",
+      "password": "changeme",
+      "firstName": "John",
+      "lastName": "Foo",
+      "campus": "manoa"
+    },
+    {
+      "email": "jane@foo.com",
+      "password": "changeme",
+      "firstName": "Jane",
+      "lastName": "Foo",
+      "campus": "manoa"
+    },
+    {
+      "email": "jack@foo.com",
+      "password": "changeme",
+      "firstName": "Jack",
+      "lastName": "Foo",
+      "campus": "leeward"
+    }
   ],
-
   "defaultProfiles": [
-    {"firstName": "John", "lastName":  "Foo", "campus":  "manoa", "owner": "admin@foo.com", "role":  "admin" },
-    {"firstName": "John", "lastName":  "Foo", "campus":  "manoa", "owner": "john@foo.com" },
-    {"firstName": "Jane", "lastName":  "Foo", "campus":  "manoa", "owner": "jane@foo.com" },
-    {"firstName": "Jack", "lastName":  "Foo", "campus":  "leeward", "owner": "jack@foo.com" }
-
+    {
+      "firstName": "John",
+      "lastName": "Foo",
+      "campus": "manoa",
+      "owner": "admin@foo.com",
+      "role": "admin"
+    },
+    {
+      "firstName": "John",
+      "lastName": "Foo",
+      "campus": "manoa",
+      "owner": "john@foo.com"
+    },
+    {
+      "firstName": "Jane",
+      "lastName": "Foo",
+      "campus": "manoa",
+      "owner": "jane@foo.com"
+    },
+    {
+      "firstName": "Jack",
+      "lastName": "Foo",
+      "campus": "leeward",
+      "owner": "jack@foo.com"
+    }
   ],
-
   "defaultBooks": [
     {
       "ISBN": "978159327290",
@@ -108,7 +146,7 @@
       "owner": "jane@foo.com",
       "classUsed": "ACC 200",
       "image": "https://images-na.ssl-images-amazon.com/images/I/51s3ghJ7vAL._SX398_BO1,204,203,200_.jpg",
-      "datePosted":"2019-11-29T12:00:00Z",
+      "datePosted": "2019-11-29T12:00:00Z",
       "condition": "excellent"
     },
     {
