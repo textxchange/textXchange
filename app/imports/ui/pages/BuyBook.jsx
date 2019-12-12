@@ -66,45 +66,6 @@ class BuyBook extends React.Component {
     return (
         <Container>
           <Header as='h1' textAlign="center" inverted>Buy Book</Header>
-          <
-          <
-          <
-          <
-          <
-          << HEAD
-          <Card fluid>
-            <Card.Group centered>
-              <Card color='red' image={this.select.image}/>
-            </Card.Group>
-            <Card.Content>
-              <Card.Header>{this.select.title}</Card.Header>
-              <Card.Meta>{this.select.author}</Card.Meta>
-              <Card.Description> {this.select.description} </Card.Description>
-              <Label tag floated='right'>
-                {this.select.classUsed}
-              </Label>
-            </Card.Content>
-            <Card.Content style={noPadding}>
-              <Card.Meta>
-                {/* eslint-disable-next-line max-len */}
-                <Image className='profile-pic' floated='left'
-                    /* eslint-disable-next-line max-len */
-                       src='https://media.discordapp.net/attachments/641715894984245258/646252553176219668/textXchange_Logo_4.png'/>
-                $ {this.select.cost}
-                <span style={right}> Posted {this.select.datePosted.toLocaleDateString()} </span>
-              </Card.Meta>
-            </Card.Content>
-            <Card.Content extra>
-              <Modal
-                  trigger={<Button basic color='green' content='Contact Seller for Purchase'/>}
-                  header='Exchange Initiated'
-                  content='The seller will be notified of your intent to purchase and will contact you!'
-                  actions={[{ key: 'done', content: 'Got it', positive: true }]}
-              />
-              <span style={right}> Owned by {this.select.owner}</span>
-            </Card.Content>
-          </Card>
-            =======
           <Card.Group itemsPerRow={2}>
             <Card>
               <Image centered src={this.select.image} size='medium'/>
@@ -165,7 +126,6 @@ class BuyBook extends React.Component {
               </Card.Content>
             </Card>
           </Card.Group>
-            >>>>>>> issue-024
         </Container>
     );
   }

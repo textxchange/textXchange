@@ -17,9 +17,9 @@ function createUser(email, password, firstName, lastName, campus, role) {
   }
 }
 
-function createProfile(firstName, lastName, studentId, campus, email) {
-  console.log(` Creating profile for user ${email}`);
-  Profiles.insert({ firstName, lastName, campus, owner: email });
+function createProfile(firstName, lastName, owner, campus) {
+  console.log(` Creating profile for user ${owner}`);
+  Profiles.insert({ firstName, lastName, campus, owner });
 }
 
 /** When running app for first time, pass a settings file to set up a default user account. */
