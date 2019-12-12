@@ -31,7 +31,7 @@ if (Meteor.users.find().count() === 0) {
     ) => createUser(email, password, firstName, lastName, campus, role));
     Meteor.settings.defaultProfiles.map((
         { firstName, lastName, campus, owner },
-    ) => createProfile(firstName, lastName, owner, campus));
+    ) => createProfile(firstName, lastName, campus, owner));
   } else {
     console.log('Cannot initialize the database!  Please invoke meteor with a settings file.');
   }
