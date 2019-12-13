@@ -29,6 +29,7 @@ class BuyBook extends React.Component {
   handleClose = () => this.setState({ modalOpen: false });
 
   plsEmail(email, book, image, buyerName) {
+    console.log(emailSent);
     if (emailSent === false) {
       Meteor.call('buyEmail', email, book, image, buyerName);
       emailSent = true;
@@ -83,7 +84,7 @@ class BuyBook extends React.Component {
                 </Card.Meta>
               </Card.Content>
               <Card.Content extra>
-                <Button centered basic color='green' onClick={this.open}>
+                <Button basic color='green' onClick={this.open}>
                   Contact Seller For Purchase
                 </Button>
                 <Confirm
@@ -95,7 +96,7 @@ class BuyBook extends React.Component {
                     open={this.state.open}
                     onCancel={this.close}
                     onConfirm={() => this.plsEmail(
-                        this.select.owner,
+                        this.props.profile[0].owner,
                         this.select.title,
                         this.select.image,
                         this.props.profile[0].firstName,
