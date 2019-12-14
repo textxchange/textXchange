@@ -11,6 +11,7 @@ import Discover from '../pages/Discover';
 import ProfileList from '../pages/ProfileList';
 import AddBook from '../pages/AddBook';
 import EditBook from '../pages/EditBook';
+import EditProfile from '../pages/EditProfile';
 import NotFound from '../pages/NotFound';
 import Signin from '../pages/Signin';
 import Signup from '../pages/Signup';
@@ -32,6 +33,7 @@ class App extends React.Component {
               <ProtectedRoute path="/buybook" component={BuyBook}/>
               <ProtectedRoute path="/add" component={AddBook}/>
               <ProtectedRoute path="/edit/:_id" component={EditBook}/>
+              <ProtectedRoute path="/profile/edit/:_id" component={EditProfile}/>
               <ProtectedRoute path="/profile" component={ProfileList}/>
               <ProtectedRoute path="/signout" component={Signout}/>
               <Route component={NotFound}/>

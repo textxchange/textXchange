@@ -1,8 +1,9 @@
 import React from 'react';
 import { Meteor } from 'meteor/meteor';
-import { Container, Header, Loader, List } from 'semantic-ui-react';
+import { Container, Header, Loader, List, Button } from 'semantic-ui-react';
 import { Profiles } from '/imports/api/profile/Profile';
 import { withTracker } from 'meteor/react-meteor-data';
+import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import Card from 'semantic-ui-react/dist/commonjs/views/Card';
 import Image from 'semantic-ui-react/dist/commonjs/elements/Image';
@@ -12,6 +13,10 @@ import ProfileBook from '../components/ProfileBook';
 
 
 class ProfileList extends React.Component {
+  editProfile(id) {
+    this.props.history.push(`/profile/edit/${this.props.profile[0]._id}`)
+  }
+
   /** If the subscription(s) have been received, render the page, otherwise show a loading icon. */
   render() {
     return (this.props.ready) ? this.renderPage() : <Loader active>Getting data</Loader>;
@@ -28,7 +33,7 @@ class ProfileList extends React.Component {
 
                       <Grid.Column width={4}>
                         <Image className="profile-picture"
-                               src='https://react.semantic-ui.com/images/wireframe/image.png' />
+                               src={this.props.profile[0].image} />
                       </Grid.Column>
 
                       <Grid.Column width={9}>
@@ -58,7 +63,12 @@ class ProfileList extends React.Component {
                                 <List className="profile-list" inverted size="huge">
                                   <List.Item>
                                     <List.Header>Description: </List.Header>
-                                    [Description will go here]
+                                    {this.props.profile[0].description}
+                                  </List.Item>
+                                  <List.Item>
+                                    <Button inverted onClick={this.editProfile.bind(this, this.props.profile[0]._id)}>
+                                      Edit Profile
+                                    </Button>
                                   </List.Item>
                                 </List>
                               </Grid.Column>

@@ -20,6 +20,8 @@ class Signup extends React.Component {
       firstName: '',
       lastName: '',
       campus: '',
+      description: '',
+      image: 'https://react.semantic-ui.com/images/wireframe/image.png',
       error: '',
       redirectToReferer: false,
     };
@@ -30,6 +32,8 @@ class Signup extends React.Component {
       firstName: '',
       lastName: '',
       campus: '',
+      description: '',
+      image: 'https://react.semantic-ui.com/images/wireframe/image.png',
       error: '',
       redirectToReferer: false,
     };
@@ -42,7 +46,7 @@ class Signup extends React.Component {
 
   /** Handle Signup submission. Create user account and a profile entry, then redirect to the home page. */
   handleSubmit = () => {
-    const { email, password, repassword, firstName, lastName, studentId, campus } = this.state;
+    const { email, password, repassword, firstName, lastName, studentId, campus, description, image } = this.state;
     // perform all neccassary validations
     if (password !== repassword) {
       this.setState({ error: "Passwords don't match" });
@@ -51,7 +55,7 @@ class Signup extends React.Component {
         if (err) {
           this.setState({ error: err.reason });
         } else {
-          Profiles.insert({ firstName, lastName, studentId, campus, owner: email },
+          Profiles.insert({ firstName, lastName, studentId, campus, description, image, owner: email },
               (error) => {
                 if (error) {
                   swal('Error', error.message, 'error');
