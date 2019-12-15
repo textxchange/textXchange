@@ -26,5 +26,7 @@ Meteor.methods({
         ;
         console.log("email sent");
     }
+    
+
 });
 
