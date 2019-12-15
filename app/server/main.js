@@ -21,10 +21,31 @@ Meteor.methods({
 
         Email.send({
             to: email,
-            from: 'textxchange.team@gmail.com',
-            subject: 'Textbook Buyer Notification!',
-            html: message,
+
+            from: "textxchange.team@gmail.com",
+            subject: "Textbook Buyer Notification!",
+            html: message
         });
-console.log('email sent');
     },
+
+    registerEmail: function (email, firstName) {
+        process.env.MAIL_URL = `smtps://textxchange.team%40gmail.com:Textxchange4ever%3F@smtp.gmail.com:465`;
+
+        let message = "<center><img src='https://cdn.discordapp.com/attachments/641715894984245258/646252553176219668/textXchange_Logo_4.png' height=\"150\" width=\"150\"/></center><br>";
+        message += "Hello " + firstName + ",<br>";
+        message += "Congrats on registering this email at textXchange, to access your account you can login <a href='http://textxchange.meteorapp.com/#/'> here</a>.<br>";
+        message += "<br><br>";
+        message += "Happy Exchanging,<br> textXchange team";
+
+        this.unblock();
+
+        Email.send({
+            to: email,
+            from: "textxchange.team@gmail.com",
+            subject: "Account Registration Confirmation",
+            html: message
+        });
+    }
+
+    
 });
