@@ -70,7 +70,8 @@ class AddBook extends React.Component {
                   <TextField name='yearPublished'/>
                   <NumField name='ISBN' decimal={false}/>
                 </Form.Group>
-                <LongTextField name='description'/>
+                <LongTextField name='description' placeholder='What does it cover? Was it helpful? Was it mandatory?
+                Now is your chance to tell the community!'/>
                 <Form.Group widths={'equal'}>
                   <NumField iconLeft='dollar' name='cost' decimal={true} min='0'/>
                   <TextField name='classUsed'/>
