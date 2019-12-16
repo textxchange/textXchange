@@ -64,8 +64,8 @@ class Discover extends React.Component {
               {this.state.param === 'class' ? (
                   <MultiSelectField name='classUsed' showInlineError={true} placeholder={'Search by classes'}/>
               ) : this.state.param === 'title' ? (
-                  <TextField name='title'/>
-              ) : <TextField name='author'/>
+                  <TextField name='title' placeholder={'Search by book title'}/>
+              ) : <TextField name='author' placeholder={'Search by book author'}/>
               }
               <Form.Group inline>
                 <Form.Field>
