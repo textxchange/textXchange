@@ -61,14 +61,6 @@ class ProfileList extends React.Component {
                                   </List.Item>
                                 </List>
                               </Grid.Column>
-                              {/*<Grid.Column width={7}>*/}
-                              {/*  <List className="profile-list" size="huge">*/}
-                              {/*    <List.Item>*/}
-                              {/*      <List.Header>Description: </List.Header>*/}
-                              {/*      {this.props.profile[0].description}*/}
-                              {/*    </List.Item>*/}
-                              {/*  </List>*/}
-                              {/*</Grid.Column>*/}
                             </Grid.Row>
                           </Grid>
                         </Container>
