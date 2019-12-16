@@ -50,19 +50,25 @@ class ProfileList extends React.Component {
                                   </List.Item>
                                   <List.Item>
                                     <List.Header as='h4'>
-                                      <Icon name='mail'/> {this.props.profile[0].owner} | <Icon name='building'/> {this.props.profile[0].campus}
+                                      <Icon name='mail'/> {this.props.profile[0].owner} |
+                                      <Icon name='building'/> {this.props.profile[0].campus}
                                     </List.Header>
                                   </List.Item>
-                                </List>
-                              </Grid.Column>
-                              <Grid.Column width={7}>
-                                <List className="profile-list" size="huge">
+                                  <br/><br/>
                                   <List.Item>
-                                    <List.Header>Description: </List.Header>
+                                    <List.Header as='h2'>Description: </List.Header>
                                     {this.props.profile[0].description}
                                   </List.Item>
                                 </List>
                               </Grid.Column>
+                              {/*<Grid.Column width={7}>*/}
+                              {/*  <List className="profile-list" size="huge">*/}
+                              {/*    <List.Item>*/}
+                              {/*      <List.Header>Description: </List.Header>*/}
+                              {/*      {this.props.profile[0].description}*/}
+                              {/*    </List.Item>*/}
+                              {/*  </List>*/}
+                              {/*</Grid.Column>*/}
                             </Grid.Row>
                           </Grid>
                         </Container>
