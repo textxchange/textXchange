@@ -5,6 +5,7 @@ import { Container, Form, Grid, Header, Message, Segment } from 'semantic-ui-rea
 import { Accounts } from 'meteor/accounts-base';
 import swal from 'sweetalert';
 import { Profiles } from '../../api/profile/Profile';
+import { Meteor } from "meteor/meteor";
 
 /**
  * Signup component is similar to signin component, but we create a new user instead.
@@ -20,6 +21,8 @@ class Signup extends React.Component {
       firstName: '',
       lastName: '',
       campus: '',
+      description: 'No description',
+      image: 'https://react.semantic-ui.com/images/wireframe/image.png',
       error: '',
       redirectToReferer: false,
     };
@@ -30,6 +33,8 @@ class Signup extends React.Component {
       firstName: '',
       lastName: '',
       campus: '',
+      description: 'No description',
+      image: 'https://react.semantic-ui.com/images/wireframe/image.png',
       error: '',
       redirectToReferer: false,
     };
@@ -42,16 +47,18 @@ class Signup extends React.Component {
 
   /** Handle Signup submission. Create user account and a profile entry, then redirect to the home page. */
   handleSubmit = () => {
-    const { email, password, repassword, firstName, lastName, studentId, campus } = this.state;
+    const { email, password, repassword, firstName, lastName, campus, description, image } = this.state;
     // perform all neccassary validations
+    Meteor.call("registerEmail", email, firstName);
+
     if (password !== repassword) {
       this.setState({ error: "Passwords don't match" });
     } else {
-      Accounts.createUser({ email, username: email, password, firstName, lastName, studentId, campus }, (err) => {
+      Accounts.createUser({ email, username: email, password, firstName, lastName, campus }, (err) => {
         if (err) {
           this.setState({ error: err.reason });
         } else {
-          Profiles.insert({ firstName, lastName, studentId, campus, owner: email },
+          Profiles.insert({ firstName, lastName, campus, description: 'No description', image, owner: email },
               (error) => {
                 if (error) {
                   swal('Error', error.message, 'error');

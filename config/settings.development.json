@@ -35,6 +35,9 @@
       "firstName": "John",
       "lastName": "Foo",
       "campus": "Mānoa",
+      "description": "Like buy books??",
+      "image": "https://react.semantic-ui.com/images/wireframe/image.png",
+
       "owner": "admin@foo.com",
       "role": "admin"
     },
@@ -42,18 +45,24 @@
       "firstName": "John",
       "lastName": "Foo",
       "campus": "Mānoa",
+      "description": "Like buy books??",
+      "image": "https://react.semantic-ui.com/images/wireframe/image.png",
       "owner": "john@foo.com"
     },
     {
       "firstName": "Jane",
       "lastName": "Foo",
       "campus": "Mānoa",
+      "description": "Helloooo, double majoring in CS and accounting.",
+      "image": "https://react.semantic-ui.com/images/wireframe/image.png",
       "owner": "jane@foo.com"
     },
     {
       "firstName": "Jack",
       "lastName": "Foo",
       "campus": "Leeward",
+      "description": "Dropping out after this semester so I got plenty to sell.",
+      "image": "https://react.semantic-ui.com/images/wireframe/image.png",
       "owner": "jack@foo.com"
     }
   ],

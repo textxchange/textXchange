@@ -1,21 +1,13 @@
-import React from "react";
-import { Meteor } from "meteor/meteor";
-import SimpleSchema from "simpl-schema";
-import { Card, Header, Container, Loader, Segment, Image, Label } from "semantic-ui-react";
-import PropTypes from "prop-types";
-import { _ } from "meteor/underscore";
-import SubmitField from "uniforms-semantic/SubmitField";
-import AutoForm from "uniforms-semantic/AutoForm";
-import { withTracker } from "meteor/react-meteor-data";
-import { Books } from "../../api/book/Book";
-import MultiSelectField from "../forms/controllers/MultiSelectField";
-import Button from "semantic-ui-react/dist/commonjs/elements/Button";
-import ProfileBook from "../components/ProfileBook";
-import Icon from "semantic-ui-react/dist/commonjs/elements/Icon";
-import Modal from "semantic-ui-react/dist/commonjs/modules/Modal";
-import { Profiles } from "/imports/api/profile/Profile";
-import { Email } from "meteor/email";
-import Confirm from "semantic-ui-react/dist/commonjs/addons/Confirm";
+import React from 'react';
+import { Meteor } from 'meteor/meteor';
+import { Card, Header, Container, Loader, Image, Label } from 'semantic-ui-react';
+import PropTypes from 'prop-types';
+import { withTracker } from 'meteor/react-meteor-data';
+import Button from 'semantic-ui-react/dist/commonjs/elements/Button';
+import Modal from 'semantic-ui-react/dist/commonjs/modules/Modal';
+import { Profiles } from '/imports/api/profile/Profile';
+import Confirm from 'semantic-ui-react/dist/commonjs/addons/Confirm';
+import { Books } from '../../api/book/Book';
 
 /** Create a schema to specify the structure of the data to appear in the form. */
 const right = { float: 'right' };
@@ -27,6 +19,7 @@ class BuyBook extends React.Component {
   state = { open: false };
 
   open = () => this.setState({ open: true });
+
   close = () => this.setState({ open: false });
 
   state = { modalOpen: false };
@@ -35,9 +28,10 @@ class BuyBook extends React.Component {
 
   handleClose = () => this.setState({ modalOpen: false });
 
-  plsEmail(email, book, image, buyerName) {
-    if (emailSent == false) {
-      Meteor.call("buyEmail", email, book, image, buyerName);
+  plsEmail(email, book, image, buyerName, buyerEmail) {
+    console.log(emailSent);
+    if (emailSent === false) {
+      Meteor.call('buyEmail', email, book, image, buyerName, buyerEmail);
       emailSent = true;
     }
     this.setState({ modalOpen: true });
@@ -46,13 +40,14 @@ class BuyBook extends React.Component {
 
   constructor(props) {
     super(props);
-    console.log(this.props.location.select);
-    if (this.props.location.select != undefined) {
+    // eslint-disable-next-line react/prop-types
+    if (this.props.location.select !== undefined) {
+      // eslint-disable-next-line no-undef,react/prop-types
       localStorage.setItem('SelectedOption', JSON.stringify(this.props.location.select));
     }
+    // eslint-disable-next-line no-undef
     this.select = JSON.parse(localStorage.getItem('SelectedOption') || 1);
     this.select.datePosted = new Date(this.select.datePosted);
-    console.log(this.select);
   }
 
 
@@ -62,7 +57,6 @@ class BuyBook extends React.Component {
   }
 
   renderPage() {
-    const { open } = this.state;
     return (
         <Container>
           <Header as='h1' textAlign="center" inverted>Buy Book</Header>
@@ -90,11 +84,12 @@ class BuyBook extends React.Component {
                 </Card.Meta>
               </Card.Content>
               <Card.Content extra>
-                <Button centered basic color='green' onClick={this.open}>
+                <Button basic color='green' onClick={this.open}>
                   Contact Seller For Purchase
                 </Button>
                 <Confirm
                     header='Purchase Confirmation'
+                    /* eslint-disable-next-line max-len */
                     content='The seller of this book will be notified of your intent to purchase and will contact you via email.'
                     cancelButton='Cancel Purchase'
                     confirmButton="Confirm Purchase"
@@ -104,7 +99,8 @@ class BuyBook extends React.Component {
                         this.select.owner,
                         this.select.title,
                         this.select.image,
-                        this.props.profile[0].firstName
+                        this.props.profile[0].firstName,
+                        this.props.profile[0].owner,
                     )}/>
 
                 <Modal
@@ -136,18 +132,18 @@ class BuyBook extends React.Component {
 BuyBook.propTypes = {
   books: PropTypes.array.isRequired,
   ready: PropTypes.bool.isRequired,
-  profile: PropTypes.array.isRequired
+  profile: PropTypes.array.isRequired,
 };
 
 /** Wrap this component in withRouter since we use the <Link> React Router element. */
 /** withTracker connects Meteor data to React components. https://guide.meteor.com/react.html#using-withTracker */
 export default withTracker(() => {
   // Get access to Stuff documents.
-  const subscription = Meteor.subscribe("BookPublic");
-  const profilesub = Meteor.subscribe("Profile");
+  const subscription = Meteor.subscribe('BookPublic');
+  const profilesub = Meteor.subscribe('Profile');
   return {
     profile: Profiles.find({}).fetch(),
     books: Books.find({}).fetch(),
-    ready: subscription.ready() && profilesub.ready()
+    ready: subscription.ready() && profilesub.ready(),
   };
 })(BuyBook);
