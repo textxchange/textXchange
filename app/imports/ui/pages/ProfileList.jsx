@@ -34,7 +34,7 @@ class ProfileList extends React.Component {
                       <Grid.Column textAlign='center' width={4}>
                         <Image className="profile-picture"
                                src={this.props.profile[0].image} />
-                        <Button inverted onClick={this.editProfile.bind(this, this.props.profile[0]._id)}>
+                        <Button onClick={this.editProfile.bind(this, this.props.profile[0]._id)}>
                           Edit Profile
                         </Button>
                       </Grid.Column>
@@ -45,7 +45,7 @@ class ProfileList extends React.Component {
                             <Grid.Row>
 
                               <Grid.Column width={9}>
-                                <List className="profile-list" inverted size="huge">
+                                <List className="profile-list" size="huge">
                                   <List.Item>
                                     <List.Header>Name:</List.Header>
                                     {this.props.profile[0].firstName} {this.props.profile[0].lastName}
@@ -63,7 +63,7 @@ class ProfileList extends React.Component {
                               </Grid.Column>
 
                               <Grid.Column width={7}>
-                                <List className="profile-list" inverted size="huge">
+                                <List className="profile-list" size="huge">
                                   <List.Item>
                                     <List.Header>Description: </List.Header>
                                     {this.props.profile[0].description}
@@ -79,7 +79,7 @@ class ProfileList extends React.Component {
 
                   <Grid.Row className="profile-bottom-row">
                     <Container className="bottom-container">
-                      <Header as="h2" textAlign="center" inverted>Selling</Header>
+                      <Header as="h2" textAlign="center" >Selling</Header>
                       <Card.Group>
                         {this.props.books.map((book, index) => <ProfileBook
                             className="profile-book"

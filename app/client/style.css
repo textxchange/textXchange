@@ -25,14 +25,14 @@ h1 {
 
 /* Profile styles*/
 .profile-top-row {
-  background-color: #303030;
+  background-color: white;
   margin: 4px;
   padding: 30px !important;
   border-radius: 5px;
 }
 
 .profile-bottom-row {
-  background-color: #303030;
+  background-color: white;
   margin: 4px;
   padding: 30px;
   border-radius: 5px;
@@ -40,7 +40,6 @@ h1 {
 
 .profile-info {
   margin: 20px;
-  color: white;
 }
 
 .profile-pic {
@@ -57,10 +56,6 @@ h1 {
 
 .profile-container {
   padding: 40px;
-}
-
-.profile-list {
-  color: white;
 }
 
 .bottom-container {
