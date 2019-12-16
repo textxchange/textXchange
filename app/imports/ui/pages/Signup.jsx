@@ -68,16 +68,16 @@ class Signup extends React.Component {
   /** Display the signup form. Redirect to add page after successful registration and login. */
   render() {
     const options = [
-      { key: 'm', text: 'Mānoa', value: 'manoa' },
-      { key: 'h', text: 'Hilo', value: 'hilo' },
-      { key: 'ha', text: 'Hawaiʻi', value: 'hawaii' },
-      { key: 'ho', text: 'Honolulu', value: 'honolulu' },
-      { key: 'k', text: 'Kapiʻolani', value: 'kapiolani' },
-      { key: 'ka', text: 'Kauaʻi', value: 'kauai' },
-      { key: 'le', text: 'Leeward', value: 'leeward' },
-      { key: 'ma', text: 'Maui', value: 'maui' },
-      { key: 'wi', text: 'Windward', value: 'winward' },
-      { key: 'wo', text: 'West Oʻahu', value: 'westoahu' },
+      { key: 'm', text: 'Mānoa', value: 'Mānoa' },
+      { key: 'h', text: 'Hilo', value: 'Hilo' },
+      { key: 'ha', text: 'Hawaiʻi', value: 'Hawaiʻi' },
+      { key: 'ho', text: 'Honolulu', value: 'Honolulu' },
+      { key: 'k', text: 'Kapiʻolani', value: 'Kapiʻolani' },
+      { key: 'ka', text: 'Kauaʻi', value: 'Kauaʻi' },
+      { key: 'le', text: 'Leeward', value: 'Leeward' },
+      { key: 'ma', text: 'Maui', value: 'Maui' },
+      { key: 'wi', text: 'Windward', value: 'Windward' },
+      { key: 'wo', text: 'West Oʻahu', value: 'West Oʻahu' },
     ];
 
     // if correct authentication, redirect to from: page instead of signup screen

@@ -14,10 +14,6 @@ class Landing extends React.Component {
                     <Header inverted as='h1' className='landing-header'
                     >University of Hawaii&apos;s textbook market exchange providing
                         an affordable route to education</Header>
-                    {/* <Button icon labelPosition='left'> */}
-                    {/*  <Icon name='user' /> */}
-                    {/*  Sign In */}
-                    {/* </Button> */}
                     <SearchBook/>
                 </Grid.Column>
             </Grid>

@@ -25,17 +25,24 @@ h1 {
 
 /* Profile styles*/
 .profile-top-row {
-  background-color: #303030;
+  background-color: #8bb7aa;
   margin: 4px;
   padding: 30px !important;
   border-radius: 5px;
+  box-shadow: 10px 10px;
 }
 
+.content {
+  color: black !important;
+}
+
+
 .profile-bottom-row {
-  background-color: #303030;
+  background-color: #8bb7aa;
   margin: 4px;
   padding: 30px;
   border-radius: 5px;
+  box-shadow: 10px 10px;
 }
 
 .profile-info {

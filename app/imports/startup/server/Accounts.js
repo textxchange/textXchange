@@ -17,7 +17,7 @@ function createUser(email, password, firstName, lastName, campus, role) {
   }
 }
 
-function createProfile(firstName, lastName, owner, campus) {
+function createProfile(firstName, lastName, campus, owner) {
   console.log(` Creating profile for user ${owner}`);
   Profiles.insert({ firstName, lastName, campus, owner });
 }
