@@ -14,7 +14,7 @@ import ProfileBook from '../components/ProfileBook';
 
 class ProfileList extends React.Component {
   editProfile(id) {
-    this.props.history.push(`/profile/edit/${this.props.profile[0]._id}`)
+    this.props.history.push(`/profile/edit/${this.props.profile[0]._id}`);
   }
 
   /** If the subscription(s) have been received, render the page, otherwise show a loading icon. */

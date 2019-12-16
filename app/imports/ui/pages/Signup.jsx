@@ -4,8 +4,8 @@ import { Link, Redirect } from 'react-router-dom';
 import { Container, Form, Grid, Header, Message, Segment } from 'semantic-ui-react';
 import { Accounts } from 'meteor/accounts-base';
 import swal from 'sweetalert';
+import { Meteor } from 'meteor/meteor';
 import { Profiles } from '../../api/profile/Profile';
-import { Meteor } from "meteor/meteor";
 
 /**
  * Signup component is similar to signin component, but we create a new user instead.
@@ -49,7 +49,7 @@ class Signup extends React.Component {
   handleSubmit = () => {
     const { email, password, repassword, firstName, lastName, campus, description, image } = this.state;
     // perform all neccassary validations
-    Meteor.call("registerEmail", email, firstName);
+    Meteor.call('registerEmail', email, firstName);
 
     if (password !== repassword) {
       this.setState({ error: "Passwords don't match" });

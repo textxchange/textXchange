@@ -25,7 +25,7 @@ h1 {
 
 /* Profile styles*/
 .profile-top-row {
-  background-color: #f5fcf5;
+  background-color: white;
   margin: 4px 4px 20px 4px;
   padding: 30px !important;
   border-radius: 5px;
@@ -38,7 +38,7 @@ h1 {
 
 
 .profile-bottom-row {
-  background-color: #f5fcf5;
+  background-color: white;
   margin: 4px;
   padding: 30px;
   border-radius: 5px;

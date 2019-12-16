@@ -8,8 +8,8 @@ import ErrorsField from 'uniforms-semantic/ErrorsField';
 import swal from 'sweetalert';
 import 'uniforms-bridge-simple-schema-2'; // required for Uniforms
 import PropTypes from 'prop-types';
-import { Profiles, ProfileSchema } from '../../api/profile/Profile';
 import SimpleSchema from 'simpl-schema';
+import { Profiles, ProfileSchema } from '../../api/profile/Profile';
 
 const formSchema = new SimpleSchema({
   description: String,
@@ -18,7 +18,7 @@ const formSchema = new SimpleSchema({
 class ProfileDescription extends React.Component {
 
   submit(data, formRef) {
-    const {description, owner} = data;
+    const { description, owner } = data;
     /* Update profile here */
   }
 
