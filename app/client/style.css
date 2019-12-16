@@ -52,6 +52,7 @@ h1 {
   width: 210px;
   height: 210px;
   border-radius: 50%;
+  margin-bottom: 10px;
 }
 
 .profile-container {
@@ -60,6 +61,10 @@ h1 {
 
 .profile-list {
   color: white;
+}
+
+.bottom-container {
+  padding: 15px;
 }
 
 .footer {

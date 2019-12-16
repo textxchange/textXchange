@@ -31,9 +31,12 @@ class ProfileList extends React.Component {
               <Grid>
                   <Grid.Row className="profile-top-row">
 
-                      <Grid.Column width={4}>
+                      <Grid.Column textAlign='center' width={4}>
                         <Image className="profile-picture"
                                src={this.props.profile[0].image} />
+                        <Button inverted onClick={this.editProfile.bind(this, this.props.profile[0]._id)}>
+                          Edit Profile
+                        </Button>
                       </Grid.Column>
 
                       <Grid.Column width={9}>
@@ -41,7 +44,7 @@ class ProfileList extends React.Component {
                           <Grid className="profile-info" columns='equal'>
                             <Grid.Row>
 
-                              <Grid.Column width={6}>
+                              <Grid.Column width={9}>
                                 <List className="profile-list" inverted size="huge">
                                   <List.Item>
                                     <List.Header>Name:</List.Header>
@@ -59,16 +62,11 @@ class ProfileList extends React.Component {
                                 </List>
                               </Grid.Column>
 
-                              <Grid.Column column={10}>
+                              <Grid.Column width={7}>
                                 <List className="profile-list" inverted size="huge">
                                   <List.Item>
                                     <List.Header>Description: </List.Header>
                                     {this.props.profile[0].description}
-                                  </List.Item>
-                                  <List.Item>
-                                    <Button inverted onClick={this.editProfile.bind(this, this.props.profile[0]._id)}>
-                                      Edit Profile
-                                    </Button>
                                   </List.Item>
                                 </List>
                               </Grid.Column>
@@ -79,8 +77,8 @@ class ProfileList extends React.Component {
                       </Grid.Column>
                   </Grid.Row>
 
-                  <Grid.Row>
-                    <Container className="profile-bottom-row">
+                  <Grid.Row className="profile-bottom-row">
+                    <Container className="bottom-container">
                       <Header as="h2" textAlign="center" inverted>Selling</Header>
                       <Card.Group>
                         {this.props.books.map((book, index) => <ProfileBook
