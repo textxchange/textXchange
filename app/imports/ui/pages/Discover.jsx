@@ -11,6 +11,7 @@ import { withTracker } from 'meteor/react-meteor-data';
 import { Books } from '../../api/book/Book';
 import MultiSelectField from '../forms/controllers/MultiSelectField';
 import DiscoverBook from '../components/DiscoverBook';
+import DiscoverMessage from '../components/DiscoverMessage';
 
 /** Create a schema to specify the structure of the data to appear in the form. */
 const makeSchema = (allClasses) => new SimpleSchema({
@@ -52,12 +53,13 @@ class Discover extends React.Component {
 
   renderPage() {
     // eslint-disable-next-line react/prop-types
-    const allClasses = _.pluck(_.sortBy((Books.find().fetch()), 'classUsed'), 'classUsed');
+    const allClasses = _.uniq(_.pluck(_.sortBy((Books.find().fetch()), 'classUsed'), 'classUsed'));
     const formSchema = makeSchema(allClasses);
     // const found = _.filter(this.props.books, (book) => book.classUsed === this.state.classUsed[0]);
     return (
         <Container className='browse'>
           <Header as='h1' textAlign="center">Browse</Header>
+          <DiscoverMessage/>
           <AutoForm schema={formSchema} onSubmit={data => this.submit(data)}>
             <Segment>
               {/* eslint-disable-next-line no-nested-ternary */}
