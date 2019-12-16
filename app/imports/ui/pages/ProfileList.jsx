@@ -44,13 +44,14 @@ class ProfileList extends React.Component {
                               <Grid.Column width={9}>
                                 <List className="profile-list" size="huge" relaxed>
                                   <List.Item>
-                                    <List.Header><Icon name='user'/> {this.props.profile[0].firstName} {this.props.profile[0].lastName}</List.Header>
+                                    <List.Header as='h1'>
+                                      {this.props.profile[0].firstName} {this.props.profile[0].lastName}
+                                    </List.Header>
                                   </List.Item>
                                   <List.Item>
-                                    <List.Header><Icon name='mail'/> {this.props.profile[0].owner}</List.Header>
-                                  </List.Item>
-                                  <List.Item>
-                                    <List.Header><Icon name='building'/> {this.props.profile[0].campus}</List.Header>
+                                    <List.Header as='h4'>
+                                      <Icon name='mail'/> {this.props.profile[0].owner} | <Icon name='building'/> {this.props.profile[0].campus}
+                                    </List.Header>
                                   </List.Item>
                                 </List>
                               </Grid.Column>

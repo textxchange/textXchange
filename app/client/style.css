@@ -25,11 +25,11 @@ h1 {
 
 /* Profile styles*/
 .profile-top-row {
-  background-color: #b4d2ba;
-  margin: 4px;
+  background-color: #f5fcf5;
+  margin: 4px 4px 20px 4px;
   padding: 30px !important;
   border-radius: 5px;
-  box-shadow: 10px 10px;
+  box-shadow: 10px 10px #454545;
 }
 
 .content {
@@ -38,11 +38,11 @@ h1 {
 
 
 .profile-bottom-row {
-  background-color: #b4d2ba;
+  background-color: #f5fcf5;
   margin: 4px;
   padding: 30px;
   border-radius: 5px;
-  box-shadow: 10px 10px;
+  box-shadow: 10px 10px #454545;
 }
 
 .profile-info {
