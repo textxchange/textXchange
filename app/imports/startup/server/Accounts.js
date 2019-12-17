@@ -17,9 +17,9 @@ function createUser(email, password, firstName, lastName, campus, role) {
   }
 }
 
-function createProfile(firstName, lastName, campus, owner) {
+function createProfile(firstName, lastName, campus, description, image, owner) {
   console.log(` Creating profile for user ${owner}`);
-  Profiles.insert({ firstName, lastName, campus, owner });
+  Profiles.insert({ firstName, lastName, campus, description, image, owner });
 }
 
 /** When running app for first time, pass a settings file to set up a default user account. */
@@ -30,8 +30,8 @@ if (Meteor.users.find().count() === 0) {
         { email, password, firstName, lastName, campus, role },
     ) => createUser(email, password, firstName, lastName, campus, role));
     Meteor.settings.defaultProfiles.map((
-        { firstName, lastName, campus, owner },
-    ) => createProfile(firstName, lastName, campus, owner));
+        { firstName, lastName, campus, description, image, owner },
+    ) => createProfile(firstName, lastName, campus, description, image, owner));
   } else {
     console.log('Cannot initialize the database!  Please invoke meteor with a settings file.');
   }

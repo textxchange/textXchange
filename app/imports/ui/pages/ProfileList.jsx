@@ -1,8 +1,9 @@
 import React from 'react';
 import { Meteor } from 'meteor/meteor';
-import { Container, Header, Loader, List } from 'semantic-ui-react';
+import { Container, Header, Loader, List, Button, Icon } from 'semantic-ui-react';
 import { Profiles } from '/imports/api/profile/Profile';
 import { withTracker } from 'meteor/react-meteor-data';
+import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import Card from 'semantic-ui-react/dist/commonjs/views/Card';
 import Image from 'semantic-ui-react/dist/commonjs/elements/Image';
@@ -12,6 +13,10 @@ import ProfileBook from '../components/ProfileBook';
 
 
 class ProfileList extends React.Component {
+  editProfile(id) {
+    this.props.history.push(`/profile/edit/${this.props.profile[0]._id}`);
+  }
+
   /** If the subscription(s) have been received, render the page, otherwise show a loading icon. */
   render() {
     return (this.props.ready) ? this.renderPage() : <Loader active>Getting data</Loader>;
@@ -25,54 +30,46 @@ class ProfileList extends React.Component {
             <Container className="profile-container">
               <Grid>
                   <Grid.Row className="profile-top-row">
-
-                      <Grid.Column width={4}>
+                      <Grid.Column textAlign='center' width={4}>
                         <Image className="profile-picture"
-                               src='https://react.semantic-ui.com/images/wireframe/image.png' />
+                               src={this.props.profile[0].image} />
+                        <Button onClick={this.editProfile.bind(this, this.props.profile[0]._id)}>
+                          Edit Profile
+                        </Button>
                       </Grid.Column>
-
                       <Grid.Column width={9}>
                         <Container>
                           <Grid className="profile-info" columns='equal'>
                             <Grid.Row>
-
-                              <Grid.Column width={6}>
-                                <List className="profile-list" inverted size="huge">
+                              <Grid.Column width={9}>
+                                <List className="profile-list" size="huge" relaxed>
                                   <List.Item>
-                                    <List.Header>Name:</List.Header>
-                                    {this.props.profile[0].firstName} {this.props.profile[0].lastName}
+                                    <List.Header as='h1'>
+                                      {this.props.profile[0].firstName} {this.props.profile[0].lastName}
+                                    </List.Header>
                                   </List.Item>
-
                                   <List.Item>
-                                    <List.Header>Email:</List.Header>{this.props.profile[0].owner}
+                                    <List.Header as='h4'>
+                                      <Icon name='mail'/> {this.props.profile[0].owner} |
+                                      <Icon name='building'/> {this.props.profile[0].campus}
+                                    </List.Header>
                                   </List.Item>
-
+                                  <br/><br/>
                                   <List.Item>
-                                    <List.Header>Campus: </List.Header>
-                                    {this.props.profile[0].campus}
-                                  </List.Item>
-                                </List>
-                              </Grid.Column>
-
-                              <Grid.Column column={10}>
-                                <List className="profile-list" inverted size="huge">
-                                  <List.Item>
-                                    <List.Header>Description: </List.Header>
-                                    [Description will go here]
+                                    <List.Header as='h2'>Description: </List.Header>
+                                    {this.props.profile[0].description}
                                   </List.Item>
                                 </List>
                               </Grid.Column>
-
                             </Grid.Row>
                           </Grid>
                         </Container>
                       </Grid.Column>
                   </Grid.Row>
-
-                  <Grid.Row>
-                    <Container className="profile-bottom-row">
-                      <Header as="h2" textAlign="center" inverted>Selling</Header>
-                      <Card.Group>
+                  <Grid.Row className="profile-bottom-row">
+                    <Container className="bottom-container">
+                      <Header as="h2" textAlign="center" >Selling</Header>
+                      <Card.Group centered>
                         {this.props.books.map((book, index) => <ProfileBook
                             className="profile-book"
                             key={index}

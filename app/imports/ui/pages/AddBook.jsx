@@ -72,7 +72,7 @@ class AddBook extends React.Component {
                 </Form.Group>
                 <LongTextField name='description'/>
                 <Form.Group widths={'equal'}>
-                  <NumField iconLeft='dollar' name='cost' decimal={true}/>
+                  <NumField iconLeft='dollar' name='cost' decimal={true} min='0'/>
                   <TextField name='classUsed'/>
                   <SelectField name='condition'/>
                 </Form.Group>
