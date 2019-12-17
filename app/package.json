@@ -4,9 +4,10 @@
   "dependencies": {
     "@babel/runtime": "^7.7.6",
     "bcrypt": "^3.0.7",
-    "classnames": "^2.2.6",
+    "classnames": "^2.2.meteor 6",
     "core-js": "^3.4.8",
     "graphql": "^0.8.2",
+    "lint": "^0.7.0",
     "meteor-node-stubs": "^0.4.1",
     "prop-types": "^15.7.2",
     "react": "^16.8.6",
@@ -23,14 +24,14 @@
     "uniforms-semantic": "^2.2.0"
   },
   "devDependencies": {
-    "eslint-utils": ">=1.4.1",
     "babel-eslint": "^10.0.3",
     "eslint": "^6.7.2",
     "eslint-config-airbnb": "^17.1.1",
     "eslint-plugin-import": "^2.19.1",
     "eslint-plugin-jsx-a11y": "^6.2.3",
     "eslint-plugin-meteor": "^5.1.0",
-    "eslint-plugin-react": "^7.14.2"
+    "eslint-plugin-react": "^7.14.2",
+    "eslint-utils": ">=1.4.1"
   },
   "scripts": {
     "start": "meteor --no-release-check --settings ../config/settings.development.json",

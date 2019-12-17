@@ -23,20 +23,9 @@ class SearchBook extends React.Component {
         }
     }
 
-    handleFormSubmit = () => {
-        const searchValue = this.state.query;
-        if (searchValue) {
-            Meteor.subscribe('BookPublic');
-            return {
-                books: Books.find({ name: searchValue }).fetch(),
-            };
-        }
-        return null;
-    }
-
     handleChange = (e) => {
         this.setState({ search: e.target.value });
-    }
+    };
 
     handleInputChange = (e) => {
         if (e.key === 'Enter') {
@@ -44,11 +33,11 @@ class SearchBook extends React.Component {
                 this.setState({ refer: true, search: e.target.value });
             }
         }
-    }
+    };
 
     handleSelectChange = (e, data) => {
         this.setState({ param: data.value });
-    }
+    };
 
     renderPage() {
         const options = [
