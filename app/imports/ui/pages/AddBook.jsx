@@ -1,6 +1,6 @@
 import React from 'react';
 import { Books } from '/imports/api/book/Book';
-import { Grid, Segment, Header, Form } from 'semantic-ui-react';
+import { Grid, Segment, Header, Form, Popup } from 'semantic-ui-react';
 import AutoForm from 'uniforms-semantic/AutoForm';
 import TextField from 'uniforms-semantic/TextField';
 import NumField from 'uniforms-semantic/NumField';
@@ -54,6 +54,7 @@ class AddBook extends React.Component {
   /** Render the form. Use Uniforms: https://github.com/vazco/uniforms */
   render() {
     let fRef = null;
+    const italics = { fontFamily: 'italic font' };
     return (
         <Grid container centered>
           <Grid.Column>
@@ -70,10 +71,18 @@ class AddBook extends React.Component {
                   <TextField name='yearPublished'/>
                   <NumField name='ISBN' decimal={false}/>
                 </Form.Group>
-                <LongTextField name='description'/>
+                <LongTextField name='description' placeholder=
+                    'What does this book cover? Was it helpful? Was it mandatory?
+                Now is your chance to tell the community!'/>
                 <Form.Group widths={'equal'}>
                   <NumField iconLeft='dollar' name='cost' decimal={true} min='0'/>
-                  <TextField name='classUsed'/>
+                  <Popup
+                      trigger={<TextField name='classUsed'/>}
+                      header='Use the course&apos;s abbreviated name and number'
+                      content='i.e: ICS 111, CHEM 161, etc.'
+                      on='focus'
+                      wide
+                  />
                   <SelectField name='condition'/>
                 </Form.Group>
                 <SubmitField value='Submit'/>
