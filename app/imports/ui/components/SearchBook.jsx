@@ -18,7 +18,6 @@ class SearchBook extends React.Component {
     }
 
     submit() {
-        console.log(this.state.search);
         if (this.state.search !== '') {
             this.setState({ refer: true });
         }
@@ -47,21 +46,8 @@ class SearchBook extends React.Component {
         }
     }
 
-    handleSelectChange = (e) => {
-        this.setState({ param: e.target.value });
-    }
-
-    searchItems = (book) => {
-        if (book.title.toLowerCase().includes(this.state.query.toLowerCase())) {
-            return true;
-        }
-        if (book.classUsed.toLowerCase().includes(this.state.query.toLowerCase())) {
-            return true;
-        }
-        if (this.state.query === '') {
-            return true;
-        }
-        return false;
+    handleSelectChange = (e, data) => {
+        this.setState({ param: data.value });
     }
 
     renderPage() {
