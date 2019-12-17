@@ -25,9 +25,7 @@ class ProfileList extends React.Component {
 
   /** Render the page once subscriptions have been received. */
   renderPage() {
-    const currentUser = Meteor.user() ? Meteor.user().username : '';
-    console.log(currentUser);
-    const myBooks = _.where(this.props.books, { owner: currentUser });
+    const myBooks = _.where(this.props.books, { owner: this.props.profile[0].owner });
     console.log(myBooks);
     return (
         <div className="beauty">
