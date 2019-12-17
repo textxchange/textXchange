@@ -47,7 +47,7 @@ class Signup extends React.Component {
 
   /** Handle Signup submission. Create user account and a profile entry, then redirect to the home page. */
   handleSubmit = () => {
-    const { email, password, repassword, firstName, lastName, campus, description, image } = this.state;
+    const { email, password, repassword, firstName, lastName, campus, image } = this.state;
     // perform all neccassary validations
     Meteor.call('registerEmail', email, firstName);
 

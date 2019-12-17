@@ -48,7 +48,10 @@ class SearchBook extends React.Component {
 
         if (this.state.refer === true && this.state.search !== '') {
             return <Redirect
-                to={{ pathname: '/discover', state: { search: this.state.search, param: this.state.param } }}/>;
+                to={{
+                    pathname: '/discover',
+                    state: { search: this.state.search, param: this.state.param, redirect: true },
+                }}/>;
         }
         return (
             <div className='searchBar'>

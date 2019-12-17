@@ -3,7 +3,6 @@ import { Meteor } from 'meteor/meteor';
 import { Container, Header, Loader, List, Button, Icon } from 'semantic-ui-react';
 import { Profiles } from '/imports/api/profile/Profile';
 import { withTracker } from 'meteor/react-meteor-data';
-import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import Card from 'semantic-ui-react/dist/commonjs/views/Card';
 import Image from 'semantic-ui-react/dist/commonjs/elements/Image';
@@ -14,7 +13,8 @@ import ProfileBook from '../components/ProfileBook';
 
 class ProfileList extends React.Component {
   editProfile(id) {
-    this.props.history.push(`/profile/edit/${this.props.profile[0]._id}`);
+    // eslint-disable-next-line react/prop-types
+    this.props.history.push(`/profile/edit/${id}`);
   }
 
   /** If the subscription(s) have been received, render the page, otherwise show a loading icon. */

@@ -10,8 +10,8 @@ const ProfileSchema = new SimpleSchema({
   firstName: String,
   lastName: String,
   campus: String,
-  description: String,
-  image: String,
+  description: { type: String, optional: true },
+  image: { type: String, optional: true },
   owner: String,
 }, { tracker: Tracker });
 

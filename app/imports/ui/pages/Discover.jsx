@@ -29,20 +29,23 @@ class Discover extends React.Component {
     componentWillMount() {
         Meteor.subscribe('BookPublic');
         // eslint-disable-next-line react/prop-types
-        if (this.props.location.state.param === 'title') {
+        if (typeof this.props.location.state !== 'undefined') {
             // eslint-disable-next-line react/prop-types
-            const re = new RegExp(this.props.location.state.search, 'gi');
-            this.setState({ param: 'title', search: true, books: Books.find({ title: re }).fetch() });
-            // eslint-disable-next-line react/prop-types
-        } else if (this.props.location.state.param === 'author') {
-            // eslint-disable-next-line react/prop-types
-            const re = new RegExp(this.props.location.state.search, 'gi');
-            this.setState({ param: 'author', search: true, books: Books.find({ author: re }).fetch() });
-        } else {
-            // eslint-disable-next-line react/prop-types,max-len
-            const restr = `${this.props.location.state.search.replace(/[^a-zA-Z0-9]/g, '').split('').join('\\s*')}\\s*\\w*`;
-            const re = new RegExp(restr, 'gi');
-            this.setState({ param: 'Sclass', search: true, books: Books.find({ classUsed: re }).fetch() });
+            if (this.props.location.state.param === 'title') {
+                // eslint-disable-next-line react/prop-types
+                const re = new RegExp(this.props.location.state.search, 'gi');
+                this.setState({ param: 'title', search: true, books: Books.find({ title: re }).fetch() });
+                // eslint-disable-next-line react/prop-types
+            } else if (this.props.location.state.param === 'author') {
+                // eslint-disable-next-line react/prop-types
+                const re = new RegExp(this.props.location.state.search, 'gi');
+                this.setState({ param: 'author', search: true, books: Books.find({ author: re }).fetch() });
+            } else {
+                // eslint-disable-next-line react/prop-types,max-len
+                const restr = `${this.props.location.state.search.replace(/[^a-zA-Z0-9]/g, '').split('').join('\\s*')}\\s*\\w*`;
+                const re = new RegExp(restr, 'gi');
+                this.setState({ param: 'Sclass', search: true, books: Books.find({ classUsed: re }).fetch() });
+            }
         }
     }
 
