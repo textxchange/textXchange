@@ -11,6 +11,7 @@ import { withTracker } from 'meteor/react-meteor-data';
 import { Books } from '../../api/book/Book';
 import MultiSelectField from '../forms/controllers/MultiSelectField';
 import DiscoverBook from '../components/DiscoverBook';
+import DiscoverMessage from '../components/DiscoverMessage';
 
 /** Create a schema to specify the structure of the data to appear in the form. */
 const makeSchema = (allClasses) => new SimpleSchema({
@@ -69,62 +70,61 @@ class Discover extends React.Component {
     render() {
         return (this.props.ready) ? this.renderPage() : <Loader active>Getting data</Loader>;
     }
-
-    renderPage() {
-        // eslint-disable-next-line react/prop-types
-        const allClasses = _.pluck(_.sortBy((Books.find().fetch()), 'classUsed'), 'classUsed');
-        const formSchema = makeSchema(allClasses);
-        // const found = _.filter(this.props.books, (book) => book.classUsed === this.state.classUsed[0]);
-        return (
-            <Container className='browse'>
-                <Header as='h1' textAlign="center">Browse</Header>
-                <AutoForm schema={formSchema} onSubmit={data => this.submit(data)}>
-                    <Segment>
-                        {/* eslint-disable-next-line no-nested-ternary */}
-                        {this.state.param === 'class' ? (
-                            <MultiSelectField name='classUsed' showInlineError={true}
-                                              placeholder={'Search by classes'}/>
-                        ) : this.state.param === 'title' ? (
-                            <TextField name='title' placeholder={'Search by book title'}/>
-                        ) : <TextField name='author' placeholder={'Search by book author'}/>
-                        }
-                        <Form.Group inline>
-                            <Form.Field>
-                                <Radio label='Title'
-                                       value='title'
-                                       checked={this.state.param === 'title'}
-                                       onClick={this.handleChange}/>
-                            </Form.Field>
-                            <Form.Field>
-                                <Radio label='Author'
-                                       value='author'
-                                       checked={this.state.param === 'author'}
-                                       onClick={this.handleChange}/>
-                            </Form.Field>
-                            <Form.Field>
-                                <Radio label='Class Used'
-                                       value='class'
-                                       checked={this.state.param === 'class'}
-                                       onClick={this.handleChange}/>
-                            </Form.Field>
-                        </Form.Group>
-                        <SubmitField value='Search'/>
-                    </Segment>
-                </AutoForm>
-                <Card.Group centered style={{ paddingTop: '10px' }}>
-                    {/* eslint-disable-next-line no-nested-ternary */}
-                    {this.state.param === 'class' ? (
-                        this.state.classUsed.map((classUsed) => {
-                            const found = _.filter(this.props.books, (book) => book.classUsed === classUsed);
-                            return found.map((book, index) => <DiscoverBook book={book} key={index}/>);
-                        })
-                    ) : this.state.search ? (
-                        this.state.books.map((book, index) => <DiscoverBook book={book} key={index}/>)
-                    ) : ''}
-                </Card.Group>
-            </Container>
-        );
-    }
+  renderPage() {
+    // eslint-disable-next-line react/prop-types
+    const allClasses = _.uniq(_.pluck(_.sortBy((Books.find().fetch()), 'classUsed'), 'classUsed'));
+    const formSchema = makeSchema(allClasses);
+    // const found = _.filter(this.props.books, (book) => book.classUsed === this.state.classUsed[0]);
+    return (
+        <Container className='browse'>
+          <Header as='h1' textAlign="center">Browse</Header>
+          <DiscoverMessage/>
+          <AutoForm schema={formSchema} onSubmit={data => this.submit(data)}>
+            <Segment>
+              {/* eslint-disable-next-line no-nested-ternary */}
+              {this.state.param === 'class' ? (
+                  <MultiSelectField name='classUsed' showInlineError={true} placeholder={'Search by classes'}/>
+              ) : this.state.param === 'title' ? (
+                  <TextField name='title' placeholder={'Search by book title'}/>
+              ) : <TextField name='author' placeholder={'Search by book author'}/>
+              }
+              <Form.Group inline>
+                <Form.Field>
+                  <Radio label='Title'
+                         value='title'
+                         checked={this.state.param === 'title'}
+                         onClick={this.handleChange}/>
+                </Form.Field>
+                <Form.Field>
+                  <Radio label='Author'
+                         value='author'
+                         checked={this.state.param === 'author'}
+                         onClick={this.handleChange}/>
+                </Form.Field>
+                <Form.Field>
+                  <Radio label='Class Used'
+                         value='class'
+                         checked={this.state.param === 'class'}
+                         onClick={this.handleChange}/>
+                </Form.Field>
+              </Form.Group>
+              <SubmitField value='Search'/>
+            </Segment>
+          </AutoForm>
+          <Card.Group centered style={{ paddingTop: '10px' }}>
+            {/* eslint-disable-next-line no-nested-ternary */}
+            {this.state.param === 'class' ? (
+                this.state.classUsed.map((classUsed) => {
+                  const found = _.filter(this.props.books, (book) => book.classUsed === classUsed);
+                  return found.map((book, index) => <DiscoverBook book={book} key={index}/>);
+                })
+            ) : this.state.search ? (
+                this.state.books.map((book, index) => <DiscoverBook book={book} key={index}/>)
+            ) : ''}
+          </Card.Group>
+        </Container>
+    );
+  }
 }
 
 /** Require a document to be passed to this component. */
