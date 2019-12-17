@@ -70,6 +70,7 @@ class Discover extends React.Component {
     render() {
         return (this.props.ready) ? this.renderPage() : <Loader active>Getting data</Loader>;
     }
+
   renderPage() {
     // eslint-disable-next-line react/prop-types
     const allClasses = _.uniq(_.pluck(_.sortBy((Books.find().fetch()), 'classUsed'), 'classUsed'));

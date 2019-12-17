@@ -54,7 +54,6 @@ class AddBook extends React.Component {
   /** Render the form. Use Uniforms: https://github.com/vazco/uniforms */
   render() {
     let fRef = null;
-    const italics = { fontFamily: 'italic font' };
     return (
         <Grid container centered>
           <Grid.Column>

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Grid, Image, Header, Message } from 'semantic-ui-react';
+import { Grid, Image, Header } from 'semantic-ui-react';
 import SearchBook from '../components/SearchBook';
 
 /** A simple static component to render some text for the landing page. */
