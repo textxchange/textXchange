@@ -22,7 +22,7 @@ const makeSchema = (allClasses) => new SimpleSchema({
     author: { type: String, label: 'Author of Book', optional: true },
 });
 
-class ProfileList extends React.Component {
+class Admin extends React.Component {
     constructor(props) {
         super(props);
         this.state = { classUsed: [], param: 'title', search: false };
@@ -111,8 +111,7 @@ class ProfileList extends React.Component {
 }
 
 /** Require an array of Book & Profile documents in the props. */
-ProfileList.propTypes = {
-    profile: PropTypes.array.isRequired,
+Admin.propTypes = {
     books: PropTypes.array.isRequired,
     ready: PropTypes.bool.isRequired,
 };
@@ -120,12 +119,10 @@ ProfileList.propTypes = {
 /** withTracker connects Meteor data to React components. https://guide.meteor.com/react.html#using-withTracker */
 export default withTracker(() => {
     // Get access to Book documents.
-    const subscription = Meteor.subscribe('Profile');
     const bookSub = Meteor.subscribe('BookPublic');
 
     return {
-        profile: Profiles.find({}).fetch(),
         books: Books.find({}).fetch(),
-        ready: subscription.ready() && bookSub.ready(),
+        ready: bookSub.ready(),
     };
-})(ProfileList);
+})(Admin);
