@@ -77,7 +77,7 @@ class AddBook extends React.Component {
                     'What does this book cover? Was it helpful? Was it mandatory?
                 Now is your chance to tell the community!'/>
                 <Form.Group widths={'equal'}>
-                  <NumField iconLeft='dollar' name='cost' decimal={true} min='0' />
+                  <NumField iconLeft='dollar' name='cost' decimal={true} min='0'/>
                   <Popup
                       trigger={<TextField name='classUsed'/>}
                       header='Use the course&apos;s abbreviated name and number'
