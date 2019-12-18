@@ -18,7 +18,7 @@ class ProfileBook extends React.Component {
         .then((json) => {
           if (json.totalItems > 0) {
             this.props.book.image = json.items[0].volumeInfo.imageLinks.thumbnail;
-            return console.log(json.items[0].volumeInfo.imageLinks.thumbnail);
+            // return console.log(json.items[0].volumeInfo.imageLinks.thumbnail);
           }
           return '';
         });

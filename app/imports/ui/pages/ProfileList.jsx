@@ -26,7 +26,6 @@ class ProfileList extends React.Component {
   /** Render the page once subscriptions have been received. */
   renderPage() {
     const myBooks = _.where(this.props.books, { owner: this.props.profile[0].owner });
-    console.log(myBooks);
     return (
         <div className="beauty">
           <Container>
@@ -40,11 +39,11 @@ class ProfileList extends React.Component {
                           Edit Profile
                         </Button>
                       </Grid.Column>
-                      <Grid.Column width={9}>
+                      <Grid.Column width={11}>
                         <Container>
                           <Grid className="profile-info" columns='equal'>
                             <Grid.Row>
-                              <Grid.Column width={9}>
+                              <Grid.Column>
                                 <List className="profile-list" size="huge" relaxed>
                                   <List.Item>
                                     <List.Header as='h1'>
