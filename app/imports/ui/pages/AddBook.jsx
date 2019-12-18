@@ -51,7 +51,7 @@ class AddBook extends React.Component {
             formRef.reset();
           }
         },
-);
+    );
   }
 
   /** Render the form. Use Uniforms: https://github.com/vazco/uniforms */
