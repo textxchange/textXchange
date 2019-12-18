@@ -15,6 +15,7 @@ function createUser(email, password, firstName, lastName, campus, role) {
   if (role === 'admin') {
     Roles.addUsersToRoles(userID, 'admin');
   }
+  Meteor.users.update(userID, { $set: { 'emails.0.verified': true } });
 }
 
 function createProfile(firstName, lastName, campus, description, image, owner) {
