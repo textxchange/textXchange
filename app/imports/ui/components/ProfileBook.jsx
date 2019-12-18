@@ -8,22 +8,6 @@ import Confirm from 'semantic-ui-react/dist/commonjs/addons/Confirm';
 
 /** Renders a Book in Profile. See pages/ProfileList.jsx. */
 class ProfileBook extends React.Component {
-
-  componentDidMount() {
-    // eslint-disable-next-line no-undef
-    fetch(`https://www.googleapis.com/books/v1/volumes?q=isbn:${this.props.book.ISBN}`, {
-      method: 'GET',
-    })
-        .then(response => response.json())
-        .then((json) => {
-          if (json.totalItems > 0) {
-            this.props.book.image = json.items[0].volumeInfo.imageLinks.thumbnail;
-            // return console.log(json.items[0].volumeInfo.imageLinks.thumbnail);
-          }
-          return '';
-        });
-  }
-
   delete(id) {
     Books.remove(id);
     this.setState({ open: false });

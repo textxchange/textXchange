@@ -28,7 +28,6 @@ class Discover extends React.Component {
     }
 
     componentWillMount() {
-        Meteor.subscribe('BookPublic');
         // eslint-disable-next-line react/prop-types
         if (typeof this.props.location.state !== 'undefined') {
             // eslint-disable-next-line react/prop-types
