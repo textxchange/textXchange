@@ -1,69 +1,48 @@
 {
   "defaultAccounts": [
     {
-      "email": "admin@foo.com",
+      "email": "wongy@hawaii.edu",
       "password": "changeme",
-      "firstName": "John",
-      "lastName": "Foo",
-      "campus": "Mānoa",
       "role": "admin"
     },
     {
-      "email": "john@foo.com",
-      "password": "changeme",
-      "firstName": "John",
-      "lastName": "Foo",
-      "campus": "Mānoa"
+      "email": "jayryanj@hawaii.edu",
+      "password": "changeme"
     },
     {
-      "email": "jane@foo.com",
-      "password": "changeme",
-      "firstName": "Jane",
-      "lastName": "Foo",
-      "campus": "Mānoa"
+      "email": "nalcan24@hawaii.edu",
+      "password": "changeme"
     },
     {
-      "email": "jack@foo.com",
-      "password": "changeme",
-      "firstName": "Jack",
-      "lastName": "Foo",
-      "campus": "Leeward"
+      "email": "nzenger@hawaii.edu",
+      "password": "changeme"
     }
   ],
   "defaultProfiles": [
     {
-      "firstName": "John",
-      "lastName": "Foo",
-      "campus": "Mānoa",
-      "description": "Like buy books??",
-      "image": "https://react.semantic-ui.com/images/wireframe/image.png",
-
-      "owner": "admin@foo.com",
+      "firstName": "Jeff",
+      "lastName": "Wong",
+      "campus": "manoa",
+      "owner": "wongy@hawaii.edu",
       "role": "admin"
     },
     {
-      "firstName": "John",
-      "lastName": "Foo",
-      "campus": "Mānoa",
-      "description": "Like buy books??",
-      "image": "https://react.semantic-ui.com/images/wireframe/image.png",
-      "owner": "john@foo.com"
+      "firstName": "Jay Ryan",
+      "lastName": "Jamorabon",
+      "campus": "manoa",
+      "owner": "jayryanj@hawaii.edu"
     },
     {
-      "firstName": "Jane",
-      "lastName": "Foo",
-      "campus": "Mānoa",
-      "description": "Helloooo, double majoring in CS and accounting.",
-      "image": "https://react.semantic-ui.com/images/wireframe/image.png",
-      "owner": "jane@foo.com"
+      "firstName": "Nadine",
+      "lastName": "Alcantara",
+      "campus": "manoa",
+      "owner": "nalcan24@hawaii.edu"
     },
     {
-      "firstName": "Jack",
-      "lastName": "Foo",
-      "campus": "Leeward",
-      "description": "Dropping out after this semester so I got plenty to sell.",
-      "image": "https://react.semantic-ui.com/images/wireframe/image.png",
-      "owner": "jack@foo.com"
+      "firstName": "Nathan",
+      "lastName": "Zenger",
+      "campus": "manoa",
+      "owner": "nzenger@hawaii.edu"
     }
   ],
   "defaultBooks": [
@@ -74,7 +53,7 @@
       "yearPublished": "2012-02-01T12:00:00Z",
       "description": "Malware analysis is big business, and attacks can cost a company dearly. When malware breaches you defenses, you need to act quickly to cure current infections and prevent future ones from occurring. For those who wnt to stay ahead of the latest malware, Practical Malware Analysis will teach you the tools and techniques used by professional analysts.",
       "cost": "35.00",
-      "owner": "john@foo.com",
+      "owner": "jayryanj@hawaii.edu",
       "classUsed": "ICS 455",
       "image": "https://covers.openlibrary.org/b/id/8708643-M.jpg",
       "datePosted": "2019-12-04T12:00:00Z",
@@ -87,7 +66,7 @@
       "yearPublished": "1984-04-02T12:00:00Z",
       "description": "An examination of ancient astronomy looks at the myths and beliefs about the heavens that influenced everyday life in these primitive cultures.",
       "cost": "25.95",
-      "owner": "jack@foo.com",
+      "owner": "nzenger@hawaii.edu",
       "classUsed": "ASTR 130",
       "image": "https://images-na.ssl-images-amazon.com/images/I/61vp0xBvI2L.jpg",
       "datePosted": "2019-12-03T12:00:00Z",
@@ -100,7 +79,7 @@
       "yearPublished": "2018-09-29T12:00:00Z",
       "description": "For more than three decades, Java has been on the forefront of developing robust software that has helped versatile businesses meet their requirements. Being one of the most widely used programming languages in history, it's imperative for Java developers to discover effective ways of using it in order to take full advantage of the power of the latest Java features. Java 11 Cookbook offers a range of software development solutions with simple and straightforward Java 11 code examples to help you build a modern software system.",
       "cost": "50.00",
-      "owner": "jane@foo.com",
+      "owner": "nalcan24@hawaii.edu",
       "classUsed": "ICS 111",
       "image": "https://covers.openlibrary.org/b/id/8508191-L.jpg",
       "datePosted": "2019-11-27T12:00:00Z",
@@ -113,7 +92,7 @@
       "yearPublished": "2018-12-15T12:00:00Z",
       "description": "Keep pace with the fast-developing world of operating systems. Open-source operating systems, virtual machines, and clustered computing are among the leading fields of operating systems and networking that are rapidly changing.",
       "cost": "47.00",
-      "owner": "john@foo.com",
+      "owner": "jayryanj@hawaii.edu",
       "classUsed": "ICS 332",
       "image": "https://covers.openlibrary.org/b/id/7298708-L.jpg",
       "datePosted": "2019-12-03T12:00:00Z",
@@ -126,7 +105,7 @@
       "yearPublished": "2016-04-06T12:00:00Z",
       "description": "Alzheimers disease affects the brain and destroys memory and thinking skills over time. As many as five million adults in the U.S. have Alzheimers disease today, and that number will continue to grow as the population ages.",
       "cost": "23.00",
-      "owner": "john@foo.com",
+      "owner": "jayryanj@hawaii.edu",
       "classUsed": "PH 310",
       "image": "https://covers.openlibrary.org/b/id/7756488-L.jpg",
       "datePosted": "2019-12-01T12:00:00Z",
@@ -139,7 +118,7 @@
       "yearPublished": "2014-07-01T12:00:00Z",
       "description": "Criminals increasingly are using malicious software (exploits, viruses, rootkits, etc.) for fraud, denial-of-service, intrusions, and espionage operations. Reverse engineering is the only method to thoroughly dissect and understand such software. So it is no surprise that reverse engineering is one of the most important subjects in information security.",
       "cost": "15.00",
-      "owner": "john@foo.com",
+      "owner": "jayryanj@hawaii.edu",
       "classUsed": "ICS 312",
       "image": "https://images-na.ssl-images-amazon.com/images/I/41ZHLQmKdjL._SX397_BO1,204,203,200_.jpg",
       "datePosted": "2019-11-27T12:00:00Z",
@@ -152,7 +131,7 @@
       "yearPublished": "2017-01-01T12:00:00Z",
       "description": "Gain a solid foundation in the core accounting concepts as you develop a true appreciation for why accounting is important to business and a prosperous society with Warren's FINANCIAL AND MANAGERIAL ACCOUNTING, 14th Edition.",
       "cost": "32.09",
-      "owner": "jane@foo.com",
+      "owner": "nalcan24@hawaii.edu",
       "classUsed": "ACC 200",
       "image": "https://images-na.ssl-images-amazon.com/images/I/51s3ghJ7vAL._SX398_BO1,204,203,200_.jpg",
       "datePosted": "2019-11-29T12:00:00Z",
@@ -165,7 +144,7 @@
       "yearPublished": "1985-09-01T12:00:00Z",
       "description": "In the Sixth Grandfather, Dr. Demallie reveals himself to be a uniquely sensitive interpreter of Lakota theology, philosophy, and history--which are all one in traditionalist Lakota thought. His editing is a masterpiece of scholarly skill and spiritual insight, insight that penetrates the inner beings of both Black Elk and John G. Neihardt, two men of vastly different cultures who became one as seekers of the Sacred.",
       "cost": "22.55",
-      "owner": "jane@foo.com",
+      "owner": "nalcan24@hawaii.edu",
       "classUsed": "AMST 345",
       "image": "https://covers.openlibrary.org/b/id/573973-M.jpg",
       "datePosted": "2019-11-22T12:00:00Z",
@@ -178,7 +157,7 @@
       "yearPublished": "2012-06-25T12:00:00Z",
       "description": "Alexander and Sadiku's fifth edition of Fundamentals of Electric Circuits continues in the spirit of its successful previous editions, with the objective of presenting circuit analysis in a manner that is clearer, more interesting, and easier to understand than other, more traditional texts.",
       "cost": "22.00",
-      "owner": "jack@foo.com",
+      "owner": "nzenger@hawaii.edu",
       "classUsed": "EE 326",
       "image": "https://covers.openlibrary.org/b/id/7352276-L.jpg",
       "datePosted": "2019-12-03T12:00:00Z",
@@ -191,7 +170,7 @@
       "yearPublished": "2018-12-02T12:00:00Z",
       "description": "Basic Economics is a citizen's guide to economics, written for those who want to understand how the economy works but have no interest in jargon or equations.",
       "cost": "32.00",
-      "owner": "john@foo.com",
+      "owner": "jayryanj@hawaii.edu",
       "classUsed": "ECON 131",
       "image": "https://covers.openlibrary.org/b/id/8647749-L.jpg",
       "datePosted": "2019-11-08T12:00:00Z",
@@ -204,7 +183,7 @@
       "yearPublished": "2019-08-31T12:00:00Z",
       "description": "Traditions & Encounters: A Brief Global History provides a streamlined account of the cultures and interactions that have shaped world history.  A focus on the human experience helps frame the broad scope of world history into a clear and concise learning experience for students.",
       "cost": "30.00",
-      "owner": "jane@foo.com",
+      "owner": "wongy@hawaii.edu",
       "classUsed": "HIST 152",
       "image": "https://images-na.ssl-images-amazon.com/images/I/51kwxZZfm1L._SX389_BO1,204,203,200_.jpg",
       "datePosted": "2019-12-01T12:00:00Z",
