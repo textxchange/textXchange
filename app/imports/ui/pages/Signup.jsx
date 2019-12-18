@@ -63,7 +63,7 @@ class Signup extends React.Component {
                 if (error) {
                   swal('Error', error.message, 'error');
                 } else {
-                  swal('Success', 'Profile created successfully', 'success');
+                  swal('Success', 'Profile created successfully, please check your email for confirmation', 'success');
                 }
               });
           this.setState({ error: '', redirectToReferer: true });
