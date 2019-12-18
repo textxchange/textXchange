@@ -1,7 +1,6 @@
 import React from 'react';
 import { Meteor } from 'meteor/meteor';
 import { Container, Header, Loader, List, Button, Icon } from 'semantic-ui-react';
-import { _ } from 'meteor/underscore';
 import { Profiles } from '/imports/api/profile/Profile';
 import { withTracker } from 'meteor/react-meteor-data';
 import PropTypes from 'prop-types';
@@ -25,7 +24,6 @@ class ProfileList extends React.Component {
 
     /** Render the page once subscriptions have been received. */
     renderPage() {
-        const myBooks = _.where(this.props.books, { owner: this.props.profile[0].owner });
         return (
             <div className="beauty">
                 <Container>
@@ -77,7 +75,6 @@ class ProfileList extends React.Component {
                                             className="profile-book"
                                             key={index}
                                             book={book}
-                                            Books={myBooks}
                                         />)}
                                     </Card.Group>
                                 </Container>

@@ -78,7 +78,6 @@ class ProfileBook extends React.Component {
 /** Require a document to be passed to this component. */
 ProfileBook.propTypes = {
     book: PropTypes.object.isRequired,
-    Books: PropTypes.array.isRequired,
     history: PropTypes.object,
 };
 

@@ -12,7 +12,6 @@ import SubmitField from 'uniforms-semantic/SubmitField';
 import SimpleSchema from 'simpl-schema';
 import { Books } from '../../api/book/Book';
 import AdminBook from '../components/AdminBook';
-import DiscoverMessage from '../components/DiscoverMessage';
 import MultiSelectField from '../forms/controllers/MultiSelectField';
 
 /** Create a schema to specify the structure of the data to appear in the form. */
