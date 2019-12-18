@@ -35,6 +35,6 @@
   },
   "scripts": {
     "start": "meteor --no-release-check --settings ../config/settings.development.json",
-    "lint": "eslint --quiet --fix --ext .jsx --ext .js ./imports"
+    "lint": "eslint --quiet --ext .jsx --ext .js ./imports"
   }
 }

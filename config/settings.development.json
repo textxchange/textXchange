@@ -24,24 +24,32 @@
       "lastName": "Wong",
       "campus": "manoa",
       "owner": "wongy@hawaii.edu",
+      "image": "https://react.semantic-ui.com/images/wireframe/image.png",
+      "description": "Hi! I am a UH student studying Computer Science!",
       "role": "admin"
     },
     {
       "firstName": "Jay Ryan",
       "lastName": "Jamorabon",
       "campus": "manoa",
+      "image": "https://react.semantic-ui.com/images/wireframe/image.png",
+      "description": "Hi! I am a UH student studying Computer Science!",
       "owner": "jayryanj@hawaii.edu"
     },
     {
       "firstName": "Nadine",
       "lastName": "Alcantara",
       "campus": "manoa",
+      "image": "https://react.semantic-ui.com/images/wireframe/image.png",
+      "description": "Hi! I am a UH student studying Computer Science!",
       "owner": "nalcan24@hawaii.edu"
     },
     {
       "firstName": "Nathan",
       "lastName": "Zenger",
       "campus": "manoa",
+      "image": "https://react.semantic-ui.com/images/wireframe/image.png",
+      "description": "Hi! I am a UH student studying Computer Science!",
       "owner": "nzenger@hawaii.edu"
     }
   ],

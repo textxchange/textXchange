@@ -41,14 +41,14 @@ Meteor.methods({
     },
 
     // eslint-disable-next-line meteor/audit-argument-checks
-    registerEmail: function (email, firstName, id) {
+    registerEmail: function (email, firstName) {
         process.env.MAIL_URL = 'smtps://textxchange.team%40gmail.com:Textxchange4ever%3F@smtp.gmail.com:465';
 
         // eslint-disable-next-line max-len
         let message = "<center><img src='https://cdn.discordapp.com/attachments/641715894984245258/646252553176219668/textXchange_Logo_4.png' height=\"150\" width=\"150\"/></center><br>";
         message += `Hello ${firstName},<br>`;
         // eslint-disable-next-line max-len
-        message += "Congrats on registering this email at textXchange, to access your account you can login <a href='http://textxchange.meteorapp.com/#/'> here</a>.<br>";
+        message += "Congrats on registering this email at textXchange, to access your account you can login <a href='http://textxchange.meteorapp.com/#/signin'> here</a>.<br>";
         message += '<br><br>';
         message += 'Happy Exchanging,<br> textXchange team';
 
@@ -68,7 +68,7 @@ Accounts.emailTemplates.verifyEmail = {
         return 'textxchange.team@gmail.com';
     },
     subject() {
-        return 'Account Registration Confirmation';
+        return 'TextXchange - Account Verification';
     },
     html(user, url) {
         const newurl = url.replace('verify-email', 'verifyemail');
@@ -76,7 +76,7 @@ Accounts.emailTemplates.verifyEmail = {
         let message = "<center><img src='https://cdn.discordapp.com/attachments/641715894984245258/646252553176219668/textXchange_Logo_4.png' height=\"150\" width=\"150\"/></center><br>";
         message += 'Hello incoming textXchanghe user, <br><br>';
         // eslint-disable-next-line max-len
-        message += 'Congrats on registering this email at textXchange, to access your account you can login at ';
+        message += 'Congrats on starting your journey at textXchange, Please verify your account ';
         message += `<a href=${newurl} >Click Me!</a>.<br>`;
         message += '<br>';
         message += 'Happy Exchanging,<br> textXchange team<br><br><br>';

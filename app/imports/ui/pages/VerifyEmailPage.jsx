@@ -9,17 +9,18 @@ import { Redirect } from 'react-router-dom';
 class VerifyEmailPage extends React.Component {
     constructor() {
         super();
-        this.state = '';
+        this.state = { refer: false };
     }
 
     componentDidMount() {
         const token = this.props.token;
         Accounts.verifyEmail(token, (err) => {
             if (err) {
-                swal('Error', `${token} Could not verify email! `, 'error');
+                swal('Error', 'Could not verify email! ', 'error');
                 Meteor.logout();
             } else {
                 swal('Success', 'Email confirmed successfully!', 'success');
+                this.setState({ refer: true });
             }
         });
     }
@@ -32,7 +33,6 @@ class VerifyEmailPage extends React.Component {
     }
 
     render() {
-        // const { from } = { from: { pathname: '/' } };
         return (
             <Redirect to={'/profile'} />
         );

@@ -1,6 +1,6 @@
 import React from 'react';
 import { Meteor } from 'meteor/meteor';
-import { Card, Header, Container, Loader, Image, Label } from 'semantic-ui-react';
+import { Card, Header, Container, Loader, Image, Label, Icon } from 'semantic-ui-react';
 import PropTypes from 'prop-types';
 import { withTracker } from 'meteor/react-meteor-data';
 import Button from 'semantic-ui-react/dist/commonjs/elements/Button';
@@ -29,7 +29,6 @@ class BuyBook extends React.Component {
   handleClose = () => this.setState({ modalOpen: false });
 
   plsEmail(email, book, image, buyerName, buyerEmail) {
-    console.log(emailSent);
     if (emailSent === false) {
       Meteor.call('buyEmail', email, book, image, buyerName, buyerEmail);
       emailSent = true;
@@ -111,9 +110,12 @@ class BuyBook extends React.Component {
                     basic
                     size='small'
                 >
-                  <Header icon='checkmark' content='Purchase Confirmed!'/>
+                  <Header style={{ color: 'White' }}>
+                    <Icon color='green' name='checkmark' />
+                     Purchase Confirmed!
+                  </Header>
                   <Modal.Content>
-                    <h3>Email has been sent to seller</h3>
+                    <h3 style={{ color: 'White' }}>Email has been sent to seller</h3>
                   </Modal.Content>
                   <Modal.Actions>
                     <Button color='green' onClick={this.handleClose} inverted>
